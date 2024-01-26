@@ -2350,3 +2350,4 @@ vendor/theseer/tokenizer/src/Tokenizer.php
 vendor/theseer/tokenizer/src/XMLSerializer.php
 supervisord.log
 supervisord.pid
+.env
