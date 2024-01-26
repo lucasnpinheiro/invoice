@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  image:
+    container_name: invoice
+    image: invoice
+    build:
+      context: .
+      args:
+        APP_STAGE: dev
+        COMPOSER_AUTH: ${COMPOSER_AUTH}
+
+  composer:
+    container_name: composer.invoice
+    image: invoice
+    depends_on:
+      - image
+    entrypoint: composer
+    command: validate
+    environment:
+      COMPOSER_AUTH: ${COMPOSER_AUTH}
+    volumes:
+      - ./:/opt/www
+
+  app:
+    container_name: app.invoice
+    image: invoice
+    env_file:
+      - .env.example
+      - .env
+    volumes:
+      - ./:/opt/www
+    ports:
+      - "8088:80"
+
