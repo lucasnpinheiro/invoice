@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Lucasnpinheiro\Invoice\Domain\Entity;
@@ -9,7 +10,7 @@ use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;
 
 class Item
 {
-private function __construct(
+    private function __construct(
         private IntegerValue $id,
         private StringValue $name,
         private StringValue $description,
@@ -26,8 +27,7 @@ private function __construct(
         PriceValue $quantity,
         PriceValue $price,
         Taxes $taxes,
-    ): self
-    {
+    ): self {
         return new self(
             $id,
             $name,
@@ -36,6 +36,61 @@ private function __construct(
             $price,
             $taxes,
         );
+    }
+
+    public function id(): IntegerValue
+    {
+        return $this->id;
+    }
+
+    public function name(): StringValue
+    {
+        return $this->name;
+    }
+
+    public function description(): StringValue
+    {
+        return $this->description;
+    }
+
+    public function quantity(): PriceValue
+    {
+        return $this->quantity;
+    }
+
+    public function price(): PriceValue
+    {
+        return $this->price;
+    }
+
+    public function taxes(): Taxes
+    {
+        return $this->taxes;
+    }
+
+    public function total(): PriceValue
+    {
+        return PriceValue::create($this->price->multiply($this->quantity->value())->value());
+    }
+
+    public function totalWithTaxes(): PriceValue
+    {
+        $this->taxes->calculate();
+        return PriceValue::create($this->total()->add($this->taxes->total())->value());
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id->value(),
+            'name' => $this->name->value(),
+            'description' => $this->description->value(),
+            'quantity' => $this->quantity->value(),
+            'price' => $this->price->value(),
+            'taxes' => $this->taxes->toArray(),
+            'total' => $this->total()->value(),
+            'total_with_taxes' => $this->totalWithTaxes()->value(),
+        ];
     }
 
 }
