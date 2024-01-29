@@ -2,6 +2,7 @@
 
 namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\Entity;
 
+use Lucasnpinheiro\Invoice\Domain\Entity\Tax;
 use PHPUnit\Framework\TestCase;
 use Lucasnpinheiro\Invoice\Domain\Entity\Taxes;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
@@ -11,55 +12,21 @@ class TaxesTest extends TestCase
 {
     public function testInstanceOf()
     {
-        $tax = Taxes::create(
-            StringValue::create('ICMS'),
-            PriceValue::create('1.95'),
-            PriceValue::create('18'),
-        );
+        $taxes = Taxes::create();
 
-        $this->assertInstanceOf(Taxes::class, $tax);
-        $this->assertEquals('ICMS', $tax->taxName()->value());
-        $this->assertEquals('1.95', $tax->value()->value());
-        $this->assertEquals('18.00', $tax->tax()->value());
-        $this->assertEquals('0.00', $tax->total()->value());
-        $this->assertTrue($tax->isCalculated()->value());
+        $this->assertInstanceOf(Taxes::class, $taxes);
     }
 
-    public function testDisabledCalculate()
+    public function testAddTax()
     {
-        $tax = Taxes::create(
+        $tax= Tax::create(
             StringValue::create('ICMS'),
             PriceValue::create('1.95'),
             PriceValue::create('18'),
         );
+        $taxes = Taxes::create([$tax]);
 
-        $tax->disabledCalculate();
-        $tax->calculate();
-
-        $this->assertInstanceOf(Taxes::class, $tax);
-        $this->assertEquals('ICMS', $tax->taxName()->value());
-        $this->assertEquals('0.00', $tax->value()->value());
-        $this->assertEquals('0.00', $tax->tax()->value());
-        $this->assertEquals('0.00', $tax->total()->value());
-        $this->assertFalse($tax->isCalculated()->value());
-    }
-
-    public function testEnabledCalculate()
-    {
-        $tax = Taxes::create(
-            StringValue::create('ICMS'),
-            PriceValue::create('1.95'),
-            PriceValue::create('18'),
-        );
-
-        $tax->enabledCalculate();
-        $tax->calculate();
-
-        $this->assertInstanceOf(Taxes::class, $tax);
-        $this->assertEquals('ICMS', $tax->taxName()->value());
-        $this->assertEquals('1.95', $tax->value()->value());
-        $this->assertEquals('18.00', $tax->tax()->value());
-        $this->assertEquals('0.35', $tax->total()->value());
-        $this->assertTrue($tax->isCalculated()->value());
+        $this->assertInstanceOf(Taxes::class, $taxes);
+        $this->assertCount(1, $taxes->toArray());
     }
 }

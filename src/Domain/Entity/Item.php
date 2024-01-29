@@ -16,8 +16,7 @@ class Item
         private StringValue $description,
         private PriceValue $quantity,
         private PriceValue $price,
-        private Taxes $taxes,
-    ) {
+        private Taxes $taxes   ) {
     }
 
     public static function create(
@@ -26,7 +25,6 @@ class Item
         StringValue $description,
         PriceValue $quantity,
         PriceValue $price,
-        Taxes $taxes,
     ): self {
         return new self(
             $id,
@@ -34,7 +32,7 @@ class Item
             $description,
             $quantity,
             $price,
-            $taxes,
+            Taxes::create(),
         );
     }
 
@@ -73,23 +71,16 @@ class Item
         return PriceValue::create($this->price->multiply($this->quantity->value())->value());
     }
 
-    public function totalWithTaxes(): PriceValue
-    {
-        $this->taxes->calculate();
-        return PriceValue::create($this->total()->add($this->taxes->total())->value());
-    }
-
     public function toArray(): array
     {
         return [
-            'id' => $this->id->value(),
-            'name' => $this->name->value(),
-            'description' => $this->description->value(),
-            'quantity' => $this->quantity->value(),
-            'price' => $this->price->value(),
-            'taxes' => $this->taxes->toArray(),
+            'id' => $this->id()->value(),
+            'name' => $this->name()->value(),
+            'description' => $this->description()->value(),
+            'quantity' => $this->quantity()->value(),
+            'price' => $this->price()->value(),
+            'taxes' => $this->taxes()->toArray(),
             'total' => $this->total()->value(),
-            'total_with_taxes' => $this->totalWithTaxes()->value(),
         ];
     }
 

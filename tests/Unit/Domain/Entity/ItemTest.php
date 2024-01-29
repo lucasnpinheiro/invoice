@@ -4,6 +4,7 @@ namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\Entity;
 
 use PHPUnit\Framework\TestCase;
 use Lucasnpinheiro\Invoice\Domain\Entity\Item;
+use Lucasnpinheiro\Invoice\Domain\Entity\Tax;
 use Lucasnpinheiro\Invoice\Domain\Entity\Taxes;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\IntegerValue;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
@@ -18,13 +19,8 @@ class ItemTest extends TestCase
         $description = StringValue::create('Description 1');
         $quantity = PriceValue::create('2');
         $price = PriceValue::create('10.00');
-        $taxes = Taxes::create(
-            StringValue::create('ICMS'),
-            PriceValue::create('20.00'),
-            PriceValue::create('18'),
-        );
 
-        $item = Item::create($id, $name, $description, $quantity, $price, $taxes);
+        $item = Item::create($id, $name, $description, $quantity, $price);
 
         $this->assertInstanceOf(Item::class, $item);
         $this->assertEquals($id, $item->id());
@@ -32,7 +28,6 @@ class ItemTest extends TestCase
         $this->assertEquals($description, $item->description());
         $this->assertEquals($quantity, $item->quantity());
         $this->assertEquals($price, $item->price());
-        $this->assertEquals($taxes, $item->taxes());
     }
 
     public function testCalculateTotal()
@@ -42,35 +37,11 @@ class ItemTest extends TestCase
         $description = StringValue::create('Description 1');
         $quantity = PriceValue::create('2');
         $price = PriceValue::create('10.00');
-        $taxes = Taxes::create(
-            StringValue::create('ICMS'),
-            PriceValue::create('20.00'),
-            PriceValue::create('18'),
-        );
 
-        $item = Item::create($id, $name, $description, $quantity, $price, $taxes);
+        $item = Item::create($id, $name, $description, $quantity, $price);
 
         $expectedTotal = PriceValue::create('20.00');
         $this->assertEquals($expectedTotal, $item->total());
-    }
-
-    public function testCalculateTotalWithTaxes()
-    {
-        $id = IntegerValue::create(1);
-        $name = StringValue::create('Item 1');
-        $description = StringValue::create('Description 1');
-        $quantity = PriceValue::create('2');
-        $price = PriceValue::create('10.00');
-        $taxes = Taxes::create(
-            StringValue::create('ICMS'),
-            PriceValue::create('20.00'),
-            PriceValue::create('18'),
-        );
-
-        $item = Item::create($id, $name, $description, $quantity, $price, $taxes);
-
-        $expectedTotalWithTaxes = PriceValue::create('22.35');
-        $this->assertEquals($expectedTotalWithTaxes, $item->totalWithTaxes());
     }
 
     public function testToArray()
@@ -80,13 +51,18 @@ class ItemTest extends TestCase
         $description = StringValue::create('Description 1');
         $quantity = PriceValue::create('2');
         $price = PriceValue::create('10.00');
-        $taxes = Taxes::create(
+
+        $item = Item::create($id, $name, $description, $quantity, $price);
+
+        $tax = Tax::create(
             StringValue::create('ICMS'),
             PriceValue::create('20.00'),
             PriceValue::create('18'),
         );
 
-        $item = Item::create($id, $name, $description, $quantity, $price, $taxes);
+        $tax->calculate();
+
+        $item->taxes()->add($tax);
 
         $expectedArray = [
             'id' => 1,
@@ -94,9 +70,8 @@ class ItemTest extends TestCase
             'description' => 'Description 1',
             'quantity' => '2.00',
             'price' => '10.00',
-            'taxes' => $taxes->toArray(),
+            'taxes' => [$tax->toArray()],
             'total' => '20.00',
-            'total_with_taxes' => '23.60',
         ];
 
         $this->assertEquals($expectedArray, $item->toArray());
