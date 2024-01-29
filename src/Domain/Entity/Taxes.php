@@ -2,73 +2,91 @@
 
 namespace Lucasnpinheiro\Invoice\Domain\Entity;
 
+use Lucasnpinheiro\Invoice\Domain\ValueObject\BooleanValue;
+use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
+use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;
+
 class Taxes
 {
-private function __construct(
-    private string $taxName,
-        private float $value,
-        private float $tax,
-        private float $total = 0,
-        private bool $disabledCalculate = false,
+    private function __construct(
+        private StringValue $taxName,
+        private PriceValue $value,
+        private PriceValue $tax,
+        private PriceValue $total,
+        private BooleanValue $isCalculated,
     ) {
+        $this-> calculate();
     }
+
     public static function create(
-        string $taxName,
-        float $value,
-        float $tax,
-    ):self
-    {
+        StringValue $taxName,
+        PriceValue $value,
+        PriceValue $tax,
+    ): self {
         return new self(
             $taxName,
             $value,
             $tax,
+            PriceValue::create(),
+            BooleanValue::create(true),
         );
     }
 
-    public function taxName():string
+    public function taxName(): StringValue
     {
         return $this->taxName;
     }
 
-    public function value():float
+    public function value(): PriceValue
     {
         return $this->value;
     }
 
-    public function tax():float
+    public function tax(): PriceValue
     {
         return $this->tax;
     }
 
-    public function total():float
+    public function total(): PriceValue
     {
         return $this->total;
     }
 
-    public function calculate():void
+    public function isCalculated(): BooleanValue
     {
-        if($this->disabledCalculate){
-            $this->tax = 0;
-            $this->value =0;
-            $this->total = 0;
+        return $this->isCalculated;
+    }
+
+    public function calculate(): void
+    {
+        if($this->isCalculated()) {
+            $this->tax = PriceValue::create();
+            $this->value = PriceValue::create();
+            $this->total = PriceValue::create();
             return;
         }
 
-        $this->total = $this->value * $this->tax;
+        $this->total = PriceValue::create($this->value()->multiply($this->tax())->value());
     }
 
     public function disabledCalculate(): void
     {
-         $this->disabledCalculate = true;
+        $this->isCalculated = BooleanValue::create(false);
     }
 
-    public function toArray():array
+    public function enabledCalculate(): void
+    {
+        $this->isCalculated = BooleanValue::create(true);
+    }
+
+    public function toArray(): array
     {
         return [
-            'value' => $this->value(),
-            'tax' => $this->tax(),
-            'total'=> $this->total(),
-            'disabledCalculate' => $this->disabledCalculate,
+            'taxName' => $this->taxName()->value(),
+            'value' => $this->value()->value(),
+            'tax' => $this->tax()->value(),
+            'total' => $this->total()->value(),
+            'is_calculated' => $this->isCalculated(),
         ];
     }
 }
