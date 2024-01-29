@@ -12,4 +12,14 @@ class BooleanValue extends BooleanValueObject
     {
         return new self($value ?? false);
     }
+
+    public function isFalse(): bool
+    {
+        return $this->value !== true;
+    }
+
+    public function isTrue(): bool
+    {
+        return $this->value === true;
+    }
 }

@@ -14,9 +14,7 @@ class Taxes
         private PriceValue $tax,
         private PriceValue $total,
         private BooleanValue $isCalculated,
-    ) {
-        $this-> calculate();
-    }
+    ) {}
 
     public static function create(
         StringValue $taxName,
@@ -59,14 +57,14 @@ class Taxes
 
     public function calculate(): void
     {
-        if($this->isCalculated()) {
+        if($this->isCalculated()->isFalse()) {
             $this->tax = PriceValue::create();
             $this->value = PriceValue::create();
             $this->total = PriceValue::create();
             return;
         }
-
-        $this->total = PriceValue::create($this->value()->multiply($this->tax())->value());
+        $total = $this->value()->multiply($this->tax()->divide(100)->value());
+        $this->total = PriceValue::create($total->value());
     }
 
     public function disabledCalculate(): void
