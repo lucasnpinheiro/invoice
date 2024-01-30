@@ -23,11 +23,7 @@ class Invoice
         Note $note,
     ): self {
         return new self(
-            $orderId,
-            $client,
-            $itens,
-            $cfop,
-            $note,
+            $orderId, $client, $itens, $cfop, $note,
         );
     }
 }

@@ -2,10 +2,6 @@
 
 namespace Lucasnpinheiro\Invoice\Domain\Entity;
 
-use Lucasnpinheiro\Invoice\Domain\ValueObject\BooleanValue;
-use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
-use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;
-
 class Taxes
 {
     private function __construct(

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lucasnpinheiro\Invoice\Domain\ValueObject;
 
 use BaseValueObject\IntValueObject;
+use InvalidArgumentException;
 
 class IntegerValue extends IntValueObject
 {
@@ -16,7 +17,7 @@ class IntegerValue extends IntValueObject
     protected function validate($value): bool
     {
         if ((int)$value < 0) {
-            throw new \InvalidArgumentException('Integer cannot be negative');
+            throw new InvalidArgumentException('Integer cannot be negative');
         }
 
         return true;

@@ -2,10 +2,10 @@
 
 namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\Entity;
 
-use PHPUnit\Framework\TestCase;
 use Lucasnpinheiro\Invoice\Domain\Entity\Tax;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;
+use PHPUnit\Framework\TestCase;
 
 class TaxTest extends TestCase
 {

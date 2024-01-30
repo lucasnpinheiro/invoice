@@ -2,8 +2,9 @@
 
 namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\ValueObject;
 
-use PHPUnit\Framework\TestCase;
+use InvalidArgumentException;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\IntegerValue;
+use PHPUnit\Framework\TestCase;
 
 class IntegerValueTest extends TestCase
 {
@@ -21,7 +22,7 @@ class IntegerValueTest extends TestCase
 
     public function testNegativeValueReturnException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $integer = IntegerValue::create(-5);
         $this->assertEquals('-5', $integer->value());
     }

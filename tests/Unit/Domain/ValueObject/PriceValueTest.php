@@ -2,8 +2,9 @@
 
 namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\ValueObject;
 
-use PHPUnit\Framework\TestCase;
+use InvalidArgumentException;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
+use PHPUnit\Framework\TestCase;
 
 class PriceValueTest extends TestCase
 {
@@ -21,7 +22,7 @@ class PriceValueTest extends TestCase
 
     public function testNegativeValueReturnException()
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $price = PriceValue::create(-5.99);
         $this->assertEquals('-5.99', $price->value());
     }

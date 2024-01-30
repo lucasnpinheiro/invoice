@@ -2,13 +2,12 @@
 
 namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\Entity;
 
-use PHPUnit\Framework\TestCase;
 use Lucasnpinheiro\Invoice\Domain\Entity\Item;
 use Lucasnpinheiro\Invoice\Domain\Entity\Tax;
-use Lucasnpinheiro\Invoice\Domain\Entity\Taxes;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\IntegerValue;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;
+use PHPUnit\Framework\TestCase;
 
 class ItemTest extends TestCase
 {

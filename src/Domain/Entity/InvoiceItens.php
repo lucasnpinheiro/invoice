@@ -18,11 +18,13 @@ class InvoiceItens
         return new self($itens);
     }
 
-    public function add(Item $iten){
+    public function add(Item $iten)
+    {
         $this->itens[] = $iten;
     }
 
-    public function toArray():array {
+    public function toArray(): array
+    {
         return $this->itens;
     }
 }

@@ -2,14 +2,14 @@
 
 namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\ValueObject;
 
-use PHPUnit\Framework\TestCase;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\BooleanValue;
+use PHPUnit\Framework\TestCase;
 
 class BooleanValueTest extends TestCase
 {
     public function testTrueValue()
     {
-        $boolean= BooleanValue::create(true);
+        $boolean = BooleanValue::create(true);
         $this->assertTrue($boolean->value());
         $this->assertTrue($boolean->isTrue());
         $this->assertFalse($boolean->isFalse());
@@ -17,7 +17,7 @@ class BooleanValueTest extends TestCase
 
     public function testFalseValue()
     {
-        $boolean= BooleanValue::create(false);
+        $boolean = BooleanValue::create(false);
         $this->assertFalse($boolean->value());
         $this->assertFalse($boolean->isTrue());
         $this->assertTrue($boolean->isFalse());
@@ -25,7 +25,7 @@ class BooleanValueTest extends TestCase
 
     public function testToEmpty()
     {
-        $boolean= BooleanValue::create();
+        $boolean = BooleanValue::create();
         $this->assertFalse($boolean->value());
         $this->assertFalse($boolean->isTrue());
         $this->assertTrue($boolean->isFalse());

@@ -3,10 +3,10 @@
 namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\Entity;
 
 use Lucasnpinheiro\Invoice\Domain\Entity\Tax;
-use PHPUnit\Framework\TestCase;
 use Lucasnpinheiro\Invoice\Domain\Entity\Taxes;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;
+use PHPUnit\Framework\TestCase;
 
 class TaxesTest extends TestCase
 {
@@ -19,7 +19,7 @@ class TaxesTest extends TestCase
 
     public function testAddTax()
     {
-        $tax= Tax::create(
+        $tax = Tax::create(
             StringValue::create('ICMS'),
             PriceValue::create('1.95'),
             PriceValue::create('18'),

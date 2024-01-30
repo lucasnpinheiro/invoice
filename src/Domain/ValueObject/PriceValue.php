@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Lucasnpinheiro\Invoice\Domain\ValueObject;
 
 use BaseValueObject\MoneyValueObject;
+use InvalidArgumentException;
 
 class PriceValue extends MoneyValueObject
 {
@@ -16,7 +17,7 @@ class PriceValue extends MoneyValueObject
     protected function validate($value): bool
     {
         if ((float)$value < 0) {
-            throw new \InvalidArgumentException('Price cannot be negative');
+            throw new InvalidArgumentException('Price cannot be negative');
         }
 
         return true;

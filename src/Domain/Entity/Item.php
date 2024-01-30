@@ -16,7 +16,8 @@ class Item
         private StringValue $description,
         private PriceValue $quantity,
         private PriceValue $price,
-        private Taxes $taxes   ) {
+        private Taxes $taxes
+    ) {
     }
 
     public static function create(
@@ -27,12 +28,7 @@ class Item
         PriceValue $price,
     ): self {
         return new self(
-            $id,
-            $name,
-            $description,
-            $quantity,
-            $price,
-            Taxes::create(),
+            $id, $name, $description, $quantity, $price, Taxes::create(),
         );
     }
 

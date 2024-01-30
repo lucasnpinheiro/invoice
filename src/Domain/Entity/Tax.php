@@ -14,7 +14,8 @@ class Tax
         private PriceValue $tax,
         private PriceValue $total,
         private BooleanValue $isCalculated,
-    ) {}
+    ) {
+    }
 
     public static function create(
         StringValue $taxName,
@@ -22,11 +23,7 @@ class Tax
         PriceValue $tax,
     ): self {
         return new self(
-            $taxName,
-            $value,
-            $tax,
-            PriceValue::create(),
-            BooleanValue::create(true),
+            $taxName, $value, $tax, PriceValue::create(), BooleanValue::create(true),
         );
     }
 
@@ -57,7 +54,7 @@ class Tax
 
     public function calculate(): void
     {
-        if($this->isCalculated()->isFalse()) {
+        if ($this->isCalculated()->isFalse()) {
             $this->tax = PriceValue::create();
             $this->value = PriceValue::create();
             $this->total = PriceValue::create();
