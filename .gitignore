@@ -5,3 +5,5 @@ supervisord.log
 supervisord.pid
 .env
 .idea
+.phpunit.result.cache
+tests/reports
