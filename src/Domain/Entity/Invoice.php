@@ -1,8 +1,8 @@
 <?php
 
-namespace Lucasnpinheiro\Invoice\Domain\Entity;
+declare(strict_types=1);
 
-use Lucasnpinheiro\Invoice\Domain\ValueObject\Client;
+namespace Lucasnpinheiro\Invoice\Domain\Entity;
 
 class Invoice
 {
