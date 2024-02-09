@@ -4,34 +4,27 @@ declare(strict_types=1);
 
 namespace Lucasnpinheiro\Invoice\Domain\Entity;
 
-use Lucasnpinheiro\Invoice\Domain\ValueObject\BooleanValue;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
-use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;
 
-class Tax
+abstract class Tax
 {
     private function __construct(
-        private StringValue $taxName,
         private PriceValue $value,
         private PriceValue $tax,
         private PriceValue $total,
-        private BooleanValue $isCalculated,
     ) {
+        $this->calculate();
     }
 
     public static function create(
-        StringValue $taxName,
         PriceValue $value,
         PriceValue $tax,
     ): self {
         return new self(
-            $taxName, $value, $tax, PriceValue::create(), BooleanValue::create(true),
+            $value,
+            $tax,
+            PriceValue::create(),
         );
-    }
-
-    public function taxName(): StringValue
-    {
-        return $this->taxName;
     }
 
     public function value(): PriceValue
@@ -49,14 +42,14 @@ class Tax
         return $this->total;
     }
 
-    public function isCalculated(): BooleanValue
+    private function isCalculated(): bool
     {
-        return $this->isCalculated;
+        return !$this->tax()->isZero() && !$this->value()->isZero();
     }
 
     public function calculate(): void
     {
-        if ($this->isCalculated()->isFalse()) {
+        if (!$this->isCalculated()) {
             $this->tax = PriceValue::create();
             $this->value = PriceValue::create();
             $this->total = PriceValue::create();
@@ -66,24 +59,12 @@ class Tax
         $this->total = PriceValue::create($total->value());
     }
 
-    public function disabledCalculate(): void
-    {
-        $this->isCalculated = BooleanValue::create(false);
-    }
-
-    public function enabledCalculate(): void
-    {
-        $this->isCalculated = BooleanValue::create(true);
-    }
-
     public function toArray(): array
     {
         return [
-            'taxName' => $this->taxName()->value(),
             'value' => $this->value()->value(),
             'tax' => $this->tax()->value(),
             'total' => $this->total()->value(),
-            'is_calculated' => $this->isCalculated(),
         ];
     }
 }
