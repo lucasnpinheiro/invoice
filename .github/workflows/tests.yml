@@ -13,8 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Create Image
-      run: make install
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Build Docker image
+      run: docker build -t lucasnpinheiro:latest .
+      working-directory: ./Dockerfile
 
     - name: Run tests
       run: make test
