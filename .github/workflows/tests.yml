@@ -19,6 +19,12 @@ jobs:
     - name: Copy .env.example to .env
       run: cp .env.example .env
 
+    - name: Login to Docker Hub
+      run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
     - name: Build Docker image
       run: docker build -t lucasnpinheiro:latest .
 
