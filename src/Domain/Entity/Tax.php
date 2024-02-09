@@ -19,8 +19,8 @@ abstract class Tax
     public static function create(
         PriceValue $value,
         PriceValue $tax,
-    ): self {
-        return new self(
+    ): static {
+        return new static(
             $value,
             $tax,
             PriceValue::create(),

@@ -1,5 +1,8 @@
 <?php
-namespace Lucasnpinheiro\Invoice\Tests\Stubs\Domain;
+
+declare(strict_types=1);
+
+namespace Lucasnpinheiro\Invoice\Tests\Stubs\Domain\Entity;
 
 use Lucasnpinheiro\Invoice\Domain\Entity\Address;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;

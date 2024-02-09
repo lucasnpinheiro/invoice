@@ -1,7 +1,9 @@
 <?php
-namespace Lucasnpinheiro\Invoice\Tests\Stubs\Domain;
 
-use Lucasnpinheiro\Invoice\Domain\Entity\Address;
+declare(strict_types=1);
+
+namespace Lucasnpinheiro\Invoice\Tests\Stubs\Domain\Entity;
+
 use Lucasnpinheiro\Invoice\Domain\Entity\Client;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\IntegerValue;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;

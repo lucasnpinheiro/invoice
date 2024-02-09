@@ -3,7 +3,7 @@
 namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\Entity;
 
 use Lucasnpinheiro\Invoice\Domain\Entity\InvoiceItens;
-use Lucasnpinheiro\Invoice\Tests\Stubs\Domain\ItemStub;
+use Lucasnpinheiro\Invoice\Tests\Stubs\Domain\Entity\ItemStub;
 use PHPUnit\Framework\TestCase;
 
 class InvoiceItensTest extends TestCase

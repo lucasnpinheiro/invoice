@@ -1,78 +1,73 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\Entity;
 
 use Lucasnpinheiro\Invoice\Domain\Entity\Item;
-use Lucasnpinheiro\Invoice\Domain\Entity\Tax;
-use Lucasnpinheiro\Invoice\Domain\ValueObject\IntegerValue;
-use Lucasnpinheiro\Invoice\Domain\ValueObject\PriceValue;
-use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;
+use Lucasnpinheiro\Invoice\Tests\Stubs\Domain\Entity\ItemStub;
 use PHPUnit\Framework\TestCase;
 
 class ItemTest extends TestCase
 {
     public function testCreateItem()
     {
-        $id = IntegerValue::create(1);
-        $name = StringValue::create('Item 1');
-        $description = StringValue::create('Description 1');
-        $quantity = PriceValue::create('2');
-        $price = PriceValue::create('10.00');
+        $stub = ItemStub::random();
 
-        $item = Item::create($id, $name, $description, $quantity, $price);
-
-        $this->assertInstanceOf(Item::class, $item);
-        $this->assertEquals($id, $item->id());
-        $this->assertEquals($name, $item->name());
-        $this->assertEquals($description, $item->description());
-        $this->assertEquals($quantity, $item->quantity());
-        $this->assertEquals($price, $item->price());
-    }
-
-    public function testCalculateTotal()
-    {
-        $id = IntegerValue::create(1);
-        $name = StringValue::create('Item 1');
-        $description = StringValue::create('Description 1');
-        $quantity = PriceValue::create('2');
-        $price = PriceValue::create('10.00');
-
-        $item = Item::create($id, $name, $description, $quantity, $price);
-
-        $expectedTotal = PriceValue::create('20.00');
-        $this->assertEquals($expectedTotal, $item->total());
-    }
-
-    public function testToArray()
-    {
-        $id = IntegerValue::create(1);
-        $name = StringValue::create('Item 1');
-        $description = StringValue::create('Description 1');
-        $quantity = PriceValue::create('2');
-        $price = PriceValue::create('10.00');
-
-        $item = Item::create($id, $name, $description, $quantity, $price);
-
-        $tax = Tax::create(
-            StringValue::create('ICMS'),
-            PriceValue::create('20.00'),
-            PriceValue::create('18'),
+        $item = Item::create(
+            $stub->id(),
+            $stub->name(),
+            $stub->ean(),
+            $stub->ncm(),
+            $stub->cfop(),
+            $stub->sigla(),
+            $stub->orderPurchase(),
+            $stub->referenceSupplier(),
+            $stub->nameCompletion(),
+            $stub->cest(),
+            $stub->origin(),
+            $stub->csosn(),
+            $stub->cst(),
+            $stub->quantity(),
+            $stub->price(),
+            $stub->otherExpenses(),
+            $stub->discount(),
+            $stub->taxes(),
+            $stub->credit(),
+            $stub->creditPercentage(),
+            $stub->icms(),
+            $stub->pis(),
+            $stub->ipi(),
+            $stub->cofins(),
         );
 
-        $tax->calculate();
+        $this->assertInstanceOf(Item::class, $item);
+        $this->assertEquals($stub->id(), $item->id());
+        $this->assertEquals($stub->name(), $item->name());
+        $this->assertEquals($stub->ean(), $item->ean());
+        $this->assertEquals($stub->ncm(), $item->ncm());
+        $this->assertEquals($stub->cfop(), $item->cfop());
+        $this->assertEquals($stub->sigla(), $item->sigla());
+        $this->assertEquals($stub->orderPurchase(), $item->orderPurchase());
+        $this->assertEquals($stub->referenceSupplier(), $item->referenceSupplier());
+        $this->assertEquals($stub->nameCompletion(), $item->nameCompletion());
+        $this->assertEquals($stub->cest(), $item->cest());
+        $this->assertEquals($stub->origin(), $item->origin());
+        $this->assertEquals($stub->csosn(), $item->csosn());
+        $this->assertEquals($stub->cst(), $item->cst());
+        $this->assertEquals($stub->quantity(), $item->quantity());
+        $this->assertEquals($stub->price(), $item->price());
+        $this->assertEquals($stub->otherExpenses(), $item->otherExpenses());
+        $this->assertEquals($stub->discount(), $item->discount());
+        $this->assertEquals($stub->taxes(), $item->taxes());
+        $this->assertEquals($stub->credit(), $item->credit());
+        $this->assertEquals($stub->creditPercentage(), $item->creditPercentage());
+        $this->assertEquals($stub->icms(), $item->icms());
+        $this->assertEquals($stub->pis(), $item->pis());
+        $this->assertEquals($stub->ipi(), $item->ipi());
+        $this->assertEquals($stub->cofins(), $item->cofins());
+        $this->assertEquals($stub->total(), $item->total());
 
-        $item->taxes()->add($tax);
-
-        $expectedArray = [
-            'id' => 1,
-            'name' => 'Item 1',
-            'description' => 'Description 1',
-            'quantity' => '2.00',
-            'price' => '10.00',
-            'taxes' => [$tax->toArray()],
-            'total' => '20.00',
-        ];
-
-        $this->assertEquals($expectedArray, $item->toArray());
+        $this->assertEquals($stub->toArray(), $item->toArray());
     }
 }

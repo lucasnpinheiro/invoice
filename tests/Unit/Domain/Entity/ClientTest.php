@@ -5,7 +5,7 @@ namespace Lucasnpinheiro\Invoice\Tests\Unit\Domain\Entity;
 use Lucasnpinheiro\Invoice\Domain\Entity\Client;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\IntegerValue;
 use Lucasnpinheiro\Invoice\Domain\ValueObject\StringValue;
-use Lucasnpinheiro\Invoice\Tests\Stubs\Domain\AddressStub;
+use Lucasnpinheiro\Invoice\Tests\Stubs\Domain\Entity\AddressStub;
 use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
