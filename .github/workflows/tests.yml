@@ -1,0 +1,20 @@
+name: Run Tests and Build Docker Image
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test_and_build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Create Image
+      run: make install
+
+    - name: Run tests
+      run: make test
