@@ -16,7 +16,7 @@
     ],
     "minimum-stability": "dev",
     "scripts": {
-        "test": "./vendor/bin/phpunit -c phpunit.xml --colors=always --coverage-text"
+        "test": "./vendor/bin/phpunit -c phpunit.xml --colors=always --coverage-text --testdox"
     },
     "require-dev": {
         "phpunit/phpunit": "^10"
