@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lucasnpinheiro\Invoice\Domain\ValueObject\Nfe;
+namespace NotaFiscal;
 
 abstract class Base
 {

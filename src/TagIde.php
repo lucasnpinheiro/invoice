@@ -1,9 +1,8 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace Lucasnpinheiro\Invoice\Domain\ValueObject\Nfe;
+namespace NotaFiscal;
 
 class TagIde extends Base
 {
@@ -26,8 +25,12 @@ class TagIde extends Base
         private string $indPres,
         private string $procEmi,
         private string $verProc,
-        private string $dhCont,
-        private string $xJust
+        private ?string $cNF,
+        private ?string $indPag,
+        private ?string $cDV,
+        private ?string $indIntermed,
+        private ?string $dhCont,
+        private ?string $xJus,
     ) {
     }
 
@@ -50,8 +53,12 @@ class TagIde extends Base
         string $indPres,
         string $procEmi,
         string $verProc,
-        string $dhCont,
-        string $xJust
+        ?string $cNF,
+        ?string $indPag,
+        ?string $cDV,
+        ?string $indIntermed,
+        ?string $dhCont,
+        ?string $xJus,
     ): self {
         return new self(
             $cUF,
@@ -72,8 +79,12 @@ class TagIde extends Base
             $indPres,
             $procEmi,
             $verProc,
+            $cNF,
+            $indPag,
+            $cDV,
+            $indIntermed,
             $dhCont,
-            $xJust
+            $xJus
         );
     }
 
@@ -167,14 +178,34 @@ class TagIde extends Base
         return $this->verProc;
     }
 
-    public function dhCont(): string
+    public function cNF(): ?string
+    {
+        return $this->cNF;
+    }
+
+    public function indPag(): ?string
+    {
+        return $this->indPag;
+    }
+
+    public function cDV(): ?string
+    {
+        return $this->cDV;
+    }
+
+    public function indIntermed(): ?string
+    {
+        return $this->indIntermed;
+    }
+
+    public function dhCont(): ?string
     {
         return $this->dhCont;
     }
 
-    public function xJust(): string
+    public function xJus(): ?string
     {
-        return $this->xJust;
+        return $this->xJus;
     }
 
     public function toArray(): array
@@ -198,8 +229,12 @@ class TagIde extends Base
             'indPres' => $this->indPres(),
             'procEmi' => $this->procEmi(),
             'verProc' => $this->verProc(),
+            'cNF' => $this->cNF(),
+            'indPag' => $this->indPag(),
+            'cDV' => $this->cDV(),
+            'indIntermed' => $this->indIntermed(),
             'dhCont' => $this->dhCont(),
-            'xJust' => $this->xJust()
+            'xJus' => $this->xJus(),
         ];
     }
 }

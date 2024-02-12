@@ -1,9 +1,8 @@
 <?php
 
-
 declare(strict_types=1);
 
-namespace Lucasnpinheiro\Invoice\Domain\ValueObject\Nfe;
+namespace NotaFiscal;
 
 class TagEmit extends Base
 {

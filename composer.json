@@ -4,8 +4,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Lucasnpinheiro\\Invoice\\": "src/",
-            "Lucasnpinheiro\\Invoice\\Tests\\": "tests/"
+            "NotaFiscal\\": "src/",
+            "NotaFiscal\\Tests\\": "tests/"
         }
     },
     "authors": [
@@ -24,8 +24,6 @@
     "require": {
         "php": "~8.1",
         "ext-curl": "*",
-        "ext-decimal": "*",
-        "lucasnpinheiro/base-value-object": "dev-main",
         "nfephp-org/sped-nfe": "dev-master",
         "nfephp-org/sped-da": "dev-master"
     }

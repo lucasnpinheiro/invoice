@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Lucasnpinheiro\Invoice\Domain\ValueObject\Nfe;
+namespace NotaFiscal;
 
 class Client extends Base
 {
@@ -112,7 +112,8 @@ class Client extends Base
         return $this->addressComplement;
     }
 
-    public function toArray(): array{
+    public function toArray(): array
+    {
         return [
             'name' => $this->name(),
             'document' => $this->document(),
