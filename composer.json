@@ -1,5 +1,5 @@
 {
-    "name": "lucasnpinheiro/invoice",
+    "name": "lucasnpinheiro/nota_fiscal",
     "description": "Estrutura para tabalhar com nota fical padrão NFe e NFCe",
     "license": "MIT",
     "autoload": {
