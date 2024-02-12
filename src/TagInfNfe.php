@@ -8,8 +8,8 @@ class TagInfNfe extends Base
 {
     private function __construct(
         private string $versao,
-        private ?string $pkNItem,
-        private ?string $id
+        private ?string $pkNItem = null,
+        private ?string $id = null
     ) {
     }
 

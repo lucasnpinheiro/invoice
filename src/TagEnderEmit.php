@@ -18,7 +18,7 @@ class TagEnderEmit extends Base
         private string $cPais,
         private string $xPais,
         private string $fone,
-        private ?string $xCpl,
+        private ?string $xCpl = null,
     ) {
     }
 

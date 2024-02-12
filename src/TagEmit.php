@@ -11,11 +11,11 @@ class TagEmit extends Base
         private string $xFant,
         private string $IE,
         private string $CRT,
-        private ?string $CNPJ,
-        private ?string $IEST,
-        private ?string $IM,
-        private ?string $CNAE,
-        private ?string $CPF
+        private ?string $CNPJ = null,
+        private ?string $IEST = null,
+        private ?string $IM = null,
+        private ?string $CNAE = null,
+        private ?string $CPF = null
     ) {
     }
 

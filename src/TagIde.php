@@ -25,12 +25,12 @@ class TagIde extends Base
         private string $indPres,
         private string $procEmi,
         private string $verProc,
-        private ?string $cNF,
-        private ?string $indPag,
-        private ?string $cDV,
-        private ?string $indIntermed,
-        private ?string $dhCont,
-        private ?string $xJus,
+        private ?string $cNF = null,
+        private ?string $indPag = null,
+        private ?string $cDV = null,
+        private ?string $indIntermed = null,
+        private ?string $dhCont = null,
+        private ?string $xJus = null,
     ) {
     }
 
