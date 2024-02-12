@@ -27,7 +27,7 @@ class TagRefNfe extends Base
     public function toArray(): array
     {
         return [
-            'refNFe' => $this->refNFe,
+            'refNFe' => $this->refNFe(),
         ];
     }
 }

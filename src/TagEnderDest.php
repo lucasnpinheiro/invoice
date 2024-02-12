@@ -115,18 +115,18 @@ class TagEnderDest extends Base
     public function toArray(): array
     {
         return [
-            'xNome' => $this->xNome,
-            'xLgr' => $this->xLgr,
-            'nro' => $this->nro,
-            'xBairro' => $this->xBairro,
-            'cMun' => $this->cMun,
-            'xMun' => $this->xMun,
-            'UF' => $this->UF,
-            'CEP' => $this->CEP,
-            'cPais' => $this->cPais,
-            'xPais' => $this->xPais,
-            'fone' => $this->fone,
-            'xCpl' => $this->xCpl,
+            'xNome' => $this->xNome(),
+            'xLgr' => $this->xLgr(),
+            'nro' => $this->nro(),
+            'xBairro' => $this->xBairro(),
+            'cMun' => $this->cMun(),
+            'xMun' => $this->xMun(),
+            'UF' => $this->UF(),
+            'CEP' => $this->CEP(),
+            'cPais' => $this->cPais(),
+            'xPais' => $this->xPais(),
+            'fone' => $this->fone(),
+            'xCpl' => $this->xCpl(),
         ];
     }
 }

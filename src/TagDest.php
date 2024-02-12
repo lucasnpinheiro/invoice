@@ -101,15 +101,15 @@ class TagDest extends Base
     public function toArray(): array
     {
         return [
-            'xNome' => $this->xNome,
-            'indIEDest' => $this->indIEDest,
-            'IE' => $this->IE,
-            'CPF' => $this->CPF,
-            'CNPJ' => $this->CNPJ,
-            'ISUF' => $this->ISUF,
-            'IM' => $this->IM,
-            'email' => $this->email,
-            'idEstrangeiro' => $this->idEstrangeiro,
+            'xNome' => $this->xNome(),
+            'indIEDest' => $this->indIEDest(),
+            'IE' => $this->IE(),
+            'CPF' => $this->CPF(),
+            'CNPJ' => $this->CNPJ(),
+            'ISUF' => $this->ISUF(),
+            'IM' => $this->IM(),
+            'email' => $this->email(),
+            'idEstrangeiro' => $this->idEstrangeiro(),
         ];
     }
 }
