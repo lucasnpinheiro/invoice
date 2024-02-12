@@ -13,23 +13,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Set output
-      id: step1
-      run: |
-        echo "MY_OUTPUT=Hello, world!" >> $GITHUB_ENV
-
-    - name: Use output
-      run: |
-        echo "The output was: $MY_OUTPUT"
-
-    - name: Login to Docker Hub
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v2
+      with:
+        registry: my.private.registry.com
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     - name: Copy .env.example to .env
       run: |
