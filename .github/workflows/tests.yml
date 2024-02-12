@@ -10,25 +10,15 @@ on:
 
 jobs:
   test_and_build:
-    runs-on: ubuntu-latest
+    runs-on: lucasnpinheiro/php-fpm:php8.2
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Login to Docker Hub
-      uses: docker/login-action@f054a8b539a109f9f41c372932f1ae047eff08c9
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-
     - name: Copy .env.example to .env
       run: |
         cp .env.example .env
-
-    - name: Build Docker image
-      run: |
-        docker build -t lucasnpinheiro:latest .
 
     - name: Run tests
       run: |
