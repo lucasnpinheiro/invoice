@@ -1,0 +1,7 @@
+{
+    "project": "nota_fiscal",
+    "sonarURL": "https://sonarcloud.io",
+    "auth": {
+        "token": "9b388a2e-e454-40ba-917d-e798347694fb"
+    }
+}
