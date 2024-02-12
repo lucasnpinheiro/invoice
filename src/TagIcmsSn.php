@@ -8,71 +8,71 @@ class TagIcmsSn extends Base
 {
     private function __construct(
         private int $item,
-        private string $orig,
+        private int $orig,
         private string $CSOSN,
         private string $CST,
-        private string $vBCST,
-        private string $pICMSST,
-        private string $vICMSST,
-        private string $vBC,
-        private string $pICMS,
-        private string $vICMS,
-        private string $pMVAST,
-        private ?string $pCredSN = null,
-        private ?string $vCredICMSSN = null,
-        private ?string $modBCST = null,
-        private ?string $pRedBCST = null,
-        private ?string $vBCFCPST = null,
-        private ?string $pFCPST = null,
-        private ?string $vFCPST = null,
-        private ?string $vBCSTRet = null,
-        private ?string $pST = null,
-        private ?string $vICMSSTRet = null,
-        private ?string $vBCFCPSTRet = null,
-        private ?string $pFCPSTRet = null,
-        private ?string $vFCPSTRet = null,
-        private ?string $modBC = null,
-        private ?string $pRedBC = null,
-        private ?string $pRedBCEfet = null,
-        private ?string $vBCEfet = null,
-        private ?string $pICMSEfet = null,
-        private ?string $vICMSEfet = null,
-        private ?string $vICMSSubstituto = null,
+        private float $vBCST,
+        private float $pICMSST,
+        private float $vICMSST,
+        private float $vBC,
+        private float $pICMS,
+        private float $vICMS,
+        private float $pMVAST,
+        private ?float $pCredSN = null,
+        private ?float $vCredICMSSN = null,
+        private ?int $modBCST = null,
+        private ?float $pRedBCST = null,
+        private ?float $vBCFCPST = null,
+        private ?float $pFCPST = null,
+        private ?float $vFCPST = null,
+        private ?float $vBCSTRet = null,
+        private ?float $pST = null,
+        private ?float $vICMSSTRet = null,
+        private ?float $vBCFCPSTRet = null,
+        private ?float $pFCPSTRet = null,
+        private ?float $vFCPSTRet = null,
+        private ?int $modBC = null,
+        private ?float $pRedBC = null,
+        private ?float $pRedBCEfet = null,
+        private ?float $vBCEfet = null,
+        private ?float $pICMSEfet = null,
+        private ?float $vICMSEfet = null,
+        private ?float $vICMSSubstituto = null,
     ) {
     }
 
     public static function create(
         int $item,
-        string $orig,
+        int $orig,
         string $CSOSN,
         string $CST,
-        string $vBCST,
-        string $pICMSST,
-        string $vICMSST,
-        string $vBC,
-        string $pICMS,
-        string $vICMS,
-        string $pMVAST,
-        ?string $pCredSN = null,
-        ?string $vCredICMSSN = null,
-        ?string $modBCST = null,
-        ?string $pRedBCST = null,
-        ?string $vBCFCPST = null,
-        ?string $pFCPST = null,
-        ?string $vFCPST = null,
-        ?string $vBCSTRet = null,
-        ?string $pST = null,
-        ?string $vICMSSTRet = null,
-        ?string $vBCFCPSTRet = null,
-        ?string $pFCPSTRet = null,
-        ?string $vFCPSTRet = null,
-        ?string $modBC = null,
-        ?string $pRedBC = null,
-        ?string $pRedBCEfet = null,
-        ?string $vBCEfet = null,
-        ?string $pICMSEfet = null,
-        ?string $vICMSEfet = null,
-        ?string $vICMSSubstituto = null,
+        float $vBCST,
+        float $pICMSST,
+        float $vICMSST,
+        float $vBC,
+        float $pICMS,
+        float $vICMS,
+        float $pMVAST,
+        ?float $pCredSN = null,
+        ?float $vCredICMSSN = null,
+        ?int $modBCST = null,
+        ?float $pRedBCST = null,
+        ?float $vBCFCPST = null,
+        ?float $pFCPST = null,
+        ?float $vFCPST = null,
+        ?float $vBCSTRet = null,
+        ?float $pST = null,
+        ?float $vICMSSTRet = null,
+        ?float $vBCFCPSTRet = null,
+        ?float $pFCPSTRet = null,
+        ?float $vFCPSTRet = null,
+        ?int $modBC = null,
+        ?float $pRedBC = null,
+        ?float $pRedBCEfet = null,
+        ?float $vBCEfet = null,
+        ?float $pICMSEfet = null,
+        ?float $vICMSEfet = null,
+        ?float $vICMSSubstituto = null,
     ): self {
         return new self(
             $item,
@@ -113,7 +113,7 @@ class TagIcmsSn extends Base
     {
         return $this->item;
     }
-    public function orig(): string
+    public function orig(): int
     {
         return $this->orig;
     }
@@ -125,113 +125,142 @@ class TagIcmsSn extends Base
     {
         return $this->CST;
     }
-    public function vBCST(): string
+    public function vBCST(): float
     {
         return $this->vBCST;
     }
-    public function pICMSST(): string
+    public function pICMSST(): float
     {
         return $this->pICMSST;
     }
-    public function vICMSST(): string
+    public function vICMSST(): float
     {
         return $this->vICMSST;
     }
-    public function vBC(): string
+    public function vBC(): float
     {
         return $this->vBC;
     }
-    public function pICMS(): string
+    public function pICMS(): float
     {
         return $this->pICMS;
     }
-    public function vICMS(): string
+    public function vICMS(): float
     {
         return $this->vICMS;
     }
-    public function pMVAST(): string
+    public function pMVAST(): float
     {
         return $this->pMVAST;
     }
-    public function pCredSN(): ?string
+    public function pCredSN(): ?float
     {
         return $this->pCredSN;
     }
-    public function vCredICMSSN(): ?string
+    public function vCredICMSSN(): ?float
     {
         return $this->vCredICMSSN;
     }
-    public function modBCST(): ?string
+    public function modBCST(): ?int
     {
         return $this->modBCST;
     }
-    public function pRedBCST(): ?string
+    public function pRedBCST(): ?float
     {
         return $this->pRedBCST;
     }
-    public function vBCFCPST(): ?string
+    public function vBCFCPST(): ?float
     {
         return $this->vBCFCPST;
     }
-    public function pFCPST(): ?string
+    public function pFCPST(): ?float
     {
         return $this->pFCPST;
     }
-    public function vFCPST(): ?string
+    public function vFCPST(): ?float
     {
         return $this->vFCPST;
     }
-    public function vBCSTRet(): ?string
+    public function vBCSTRet(): ?float
     {
         return $this->vBCSTRet;
     }
-    public function pST(): ?string
+    public function pST(): ?float
     {
         return $this->pST;
     }
-    public function vICMSSTRet(): ?string
+    public function vICMSSTRet(): ?float
     {
         return $this->vICMSSTRet;
     }
-    public function vBCFCPSTRet(): ?string
+    public function vBCFCPSTRet(): ?float
     {
         return $this->vBCFCPSTRet;
     }
-    public function pFCPSTRet(): ?string
+    public function pFCPSTRet(): ?float
     {
         return $this->pFCPSTRet;
     }
-    public function vFCPSTRet(): ?string
+    public function vFCPSTRet(): ?float
     {
         return $this->vFCPSTRet;
     }
-    public function modBC(): ?string
+    public function modBC(): ?int
     {
         return $this->modBC;
     }
-    public function pRedBC(): ?string
+    public function pRedBC(): ?float
     {
         return $this->pRedBC;
     }
-    public function pRedBCEfet(): ?string
+    public function pRedBCEfet(): ?float
     {
         return $this->pRedBCEfet;
     }
-    public function vBCEfet(): ?string
+    public function vBCEfet(): ?float
     {
         return $this->vBCEfet;
     }
-    public function pICMSEfet(): ?string
+    public function pICMSEfet(): ?float
     {
         return $this->pICMSEfet;
     }
-    public function vICMSEfet(): ?string
+    public function vICMSEfet(): ?float
     {
         return $this->vICMSEfet;
     }
-    public function vICMSSubstituto(): ?string
+    public function vICMSSubstituto(): ?float
     {
         return $this->vICMSSubstituto;
+    }
+
+    public function csosn900()
+    {
+        if ($this->CSOSN() != '900') {
+            return;
+        }
+
+        $this->modBC = 3;
+        $this->pICMSST = 0;
+        $this->modBCST = 4;
+
+        if (empty($this->vBCST())) {
+            $this->vBCST = 0;
+            $this->vICMSST = 0;
+        }
+    }
+
+    public function csosn500()
+    {
+        if ($this->CSOSN() != '500') {
+            return;
+        }
+
+        $this->orig = 0;
+        $this->vBCSTRet = 0;
+        $this->pST = 0;
+        $this->vICMSSubstituto = 0;
+        $this->vICMSSTRet = 0;
     }
 
     public function toArray(): array

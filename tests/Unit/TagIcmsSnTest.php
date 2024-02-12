@@ -11,142 +11,152 @@ class TagIcmsSnTest extends TestCase
     {
         $tagIcmsSn = TagIcmsSn::create(
             1,
-            'orig',
+            0,
             'CSOSN',
             'CST',
-            'vBCST',
-            'pICMSST',
-            'vICMSST',
-            'vBC',
-            'pICMS',
-            'vICMS',
-            'pMVAST',
-            'pCredSN',
-            'vCredICMSSN',
-            'modBCST',
-            'pRedBCST',
-            'vBCFCPST',
-            'pFCPST',
-            'vFCPST',
-            'vBCSTRet',
-            'pST',
-            'vICMSSTRet',
-            'vBCFCPSTRet',
-            'pFCPSTRet',
-            'vFCPSTRet',
-            'modBC',
-            'pRedBC',
-            'pRedBCEfet',
-            'vBCEfet',
-            'pICMSEfet',
-            'vICMSEfet',
-            'vICMSSubstituto'
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
         );
 
         $this->assertInstanceOf(TagIcmsSn::class, $tagIcmsSn);
         $this->assertSame(1, $tagIcmsSn->item());
-        $this->assertSame('orig', $tagIcmsSn->orig());
+        $this->assertSame(0, $tagIcmsSn->orig());
         $this->assertSame('CSOSN', $tagIcmsSn->CSOSN());
         $this->assertSame('CST', $tagIcmsSn->CST());
-        $this->assertSame('vBCST', $tagIcmsSn->vBCST());
-        $this->assertSame('pICMSST', $tagIcmsSn->pICMSST());
-        $this->assertSame('vICMSST', $tagIcmsSn->vICMSST());
-        $this->assertSame('vBC', $tagIcmsSn->vBC());
-        $this->assertSame('pICMS', $tagIcmsSn->pICMS());
-        $this->assertSame('vICMS', $tagIcmsSn->vICMS());
-        $this->assertSame('pMVAST', $tagIcmsSn->pMVAST());
-        $this->assertSame('pCredSN', $tagIcmsSn->pCredSN());
-        $this->assertSame('vCredICMSSN', $tagIcmsSn->vCredICMSSN());
-        $this->assertSame('modBCST', $tagIcmsSn->modBCST());
-        $this->assertSame('pRedBCST', $tagIcmsSn->pRedBCST());
-        $this->assertSame('vBCFCPST', $tagIcmsSn->vBCFCPST());
-        $this->assertSame('pFCPST', $tagIcmsSn->pFCPST());
-        $this->assertSame('vFCPST', $tagIcmsSn->vFCPST());
-        $this->assertSame('vBCSTRet', $tagIcmsSn->vBCSTRet());
-        $this->assertSame('pST', $tagIcmsSn->pST());
-        $this->assertSame('vICMSSTRet', $tagIcmsSn->vICMSSTRet());
-        $this->assertSame('vBCFCPSTRet', $tagIcmsSn->vBCFCPSTRet());
-        $this->assertSame('pFCPSTRet', $tagIcmsSn->pFCPSTRet());
-        $this->assertSame('vFCPSTRet', $tagIcmsSn->vFCPSTRet());
-        $this->assertSame('modBC', $tagIcmsSn->modBC());
-        $this->assertSame('pRedBC', $tagIcmsSn->pRedBC());
-        $this->assertSame('pRedBCEfet', $tagIcmsSn->pRedBCEfet());
-        $this->assertSame('vBCEfet', $tagIcmsSn->vBCEfet());
-        $this->assertSame('pICMSEfet', $tagIcmsSn->pICMSEfet());
-        $this->assertSame('vICMSEfet', $tagIcmsSn->vICMSEfet());
-        $this->assertSame('vICMSSubstituto', $tagIcmsSn->vICMSSubstituto());
+        $this->assertSame(0.0, $tagIcmsSn->vBCST());
+        $this->assertSame(0.0, $tagIcmsSn->pICMSST());
+        $this->assertSame(0.0, $tagIcmsSn->vICMSST());
+        $this->assertSame(0.0, $tagIcmsSn->vBC());
+        $this->assertSame(0.0, $tagIcmsSn->pICMS());
+        $this->assertSame(0.0, $tagIcmsSn->vICMS());
+        $this->assertSame(0.0, $tagIcmsSn->pMVAST());
+        $this->assertNull($tagIcmsSn->pCredSN());
+        $this->assertNull($tagIcmsSn->vCredICMSSN());
+        $this->assertNull($tagIcmsSn->modBCST());
+        $this->assertNull($tagIcmsSn->pRedBCST());
+        $this->assertNull($tagIcmsSn->vBCFCPST());
+        $this->assertNull($tagIcmsSn->pFCPST());
+        $this->assertNull($tagIcmsSn->vFCPST());
+        $this->assertNull($tagIcmsSn->vBCSTRet());
+        $this->assertNull($tagIcmsSn->pST());
+        $this->assertNull($tagIcmsSn->vICMSSTRet());
+        $this->assertNull($tagIcmsSn->vBCFCPSTRet());
+        $this->assertNull($tagIcmsSn->pFCPSTRet());
+        $this->assertNull($tagIcmsSn->vFCPSTRet());
+        $this->assertNull($tagIcmsSn->modBC());
+        $this->assertNull($tagIcmsSn->pRedBC());
+        $this->assertNull($tagIcmsSn->pRedBCEfet());
+        $this->assertNull($tagIcmsSn->vBCEfet());
+        $this->assertNull($tagIcmsSn->pICMSEfet());
+        $this->assertNull($tagIcmsSn->vICMSEfet());
+        $this->assertNull($tagIcmsSn->vICMSSubstituto());
     }
 
     public function testToArray(): void
     {
         $tagIcmsSn = TagIcmsSn::create(
             1,
-            'orig',
+            0,
             'CSOSN',
             'CST',
-            'vBCST',
-            'pICMSST',
-            'vICMSST',
-            'vBC',
-            'pICMS',
-            'vICMS',
-            'pMVAST',
-            'pCredSN',
-            'vCredICMSSN',
-            'modBCST',
-            'pRedBCST',
-            'vBCFCPST',
-            'pFCPST',
-            'vFCPST',
-            'vBCSTRet',
-            'pST',
-            'vICMSSTRet',
-            'vBCFCPSTRet',
-            'pFCPSTRet',
-            'vFCPSTRet',
-            'modBC',
-            'pRedBC',
-            'pRedBCEfet',
-            'vBCEfet',
-            'pICMSEfet',
-            'vICMSEfet',
-            'vICMSSubstituto'
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
         );
 
         $expectedArray = [
             'item' => 1,
-            'orig' => 'orig',
+            'orig' => 0,
             'CSOSN' => 'CSOSN',
             'CST' => 'CST',
-            'vBCST' => 'vBCST',
-            'pICMSST' => 'pICMSST',
-            'vICMSST' => 'vICMSST',
-            'vBC' => 'vBC',
-            'pICMS' => 'pICMS',
-            'vICMS' => 'vICMS',
-            'pMVAST' => 'pMVAST',
-            'pCredSN' => 'pCredSN',
-            'vCredICMSSN' => 'vCredICMSSN',
-            'modBCST' => 'modBCST',
-            'pRedBCST' => 'pRedBCST',
-            'vBCFCPST' => 'vBCFCPST',
-            'pFCPST' => 'pFCPST',
-            'vFCPST' => 'vFCPST',
-            'vBCSTRet' => 'vBCSTRet',
-            'pST' => 'pST',
-            'vICMSSTRet' => 'vICMSSTRet',
-            'vBCFCPSTRet' => 'vBCFCPSTRet',
-            'pFCPSTRet' => 'pFCPSTRet',
-            'vFCPSTRet' => 'vFCPSTRet',
-            'modBC' => 'modBC',
-            'pRedBC' => 'pRedBC',
-            'pRedBCEfet' => 'pRedBCEfet',
-            'vBCEfet' => 'vBCEfet',
-            'pICMSEfet' => 'pICMSEfet',
-            'vICMSEfet' => 'vICMSEfet',
-            'vICMSSubstituto' => 'vICMSSubstituto',
+            'vBCST' => 0.0,
+            'pICMSST' => 0.0,
+            'vICMSST' => 0.0,
+            'vBC' => 0.0,
+            'pICMS' => 0.0,
+            'vICMS' => 0.0,
+            'pMVAST' => 0.0,
+            'pCredSN' => null,
+            'vCredICMSSN' => null,
+            'modBCST' => null,
+            'pRedBCST' => null,
+            'vBCFCPST' => null,
+            'pFCPST' => null,
+            'vFCPST' => null,
+            'vBCSTRet' => null,
+            'pST' => null,
+            'vICMSSTRet' => null,
+            'vBCFCPSTRet' => null,
+            'pFCPSTRet' => null,
+            'vFCPSTRet' => null,
+            'modBC' => null,
+            'pRedBC' => null,
+            'pRedBCEfet' => null,
+            'vBCEfet' => null,
+            'pICMSEfet' => null,
+            'vICMSEfet' => null,
+            'vICMSSubstituto' => null,
         ];
 
         $this->assertSame($expectedArray, $tagIcmsSn->toArray());
+    }
+
+    public function testCsosn900(): void
+    {
+        $tagIcmsSn = TagIcmsSn::create(
+            1,
+            0,
+            '900',
+            'CST',
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+        );
+
+        $tagIcmsSn->csosn900();
+
+        $this->assertSame(3, $tagIcmsSn->modBC());
+        $this->assertSame(0.0, $tagIcmsSn->pICMSST());
+        $this->assertSame(4, $tagIcmsSn->modBCST());
+        $this->assertSame(0.0, $tagIcmsSn->vBCST());
+        $this->assertSame(0.0, $tagIcmsSn->vICMSST());
+    }
+
+    public function testCsosn500(): void
+    {
+        $tagIcmsSn = TagIcmsSn::create(
+            1,
+            0,
+            '500',
+            'CST',
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+        );
+
+        $tagIcmsSn->csosn500();
+
+        $this->assertSame(0, $tagIcmsSn->orig());
+        $this->assertSame(0.0, $tagIcmsSn->vBCSTRet());
+        $this->assertSame(0.0, $tagIcmsSn->pST());
+        $this->assertSame(0.0, $tagIcmsSn->vICMSSubstituto());
+        $this->assertSame(0.0, $tagIcmsSn->vICMSSTRet());
     }
 }
