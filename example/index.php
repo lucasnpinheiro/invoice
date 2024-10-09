@@ -1,14 +1,3 @@
-## Gestor NFe em PHP
-
-### Intalando o projeto
-
-```bash
-  composer install lucasnpinheiro/nota_fiscal
-```
-
-### Exemplo o projeto
-
-```php
 <?php
 
 use NotaFiscal\Dto\CertificateParamsDto;
@@ -28,4 +17,3 @@ $notaFiscal->getCertificate(
         2,
     )
 );
-```
