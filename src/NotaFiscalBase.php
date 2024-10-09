@@ -6,52 +6,41 @@ namespace NotaFiscal;
 
 use NFePHP\Common\Certificate;
 use NFePHP\NFe\Tools;
+use NotaFiscal\Dto\CertificateParamsDto;
 
 class NotaFiscalBase
 {
+    public function getCertificate(CertificateParamsDto $dto): Tools {
 
-    public function getCertificateConfiguration(string $cnpj, string $nome, string $uf, int $ambiente = 2): array
-    {
-        return [
-            "atualizacao" => date('Y-m-d H:i:s'),
-            "tpAmb" => $ambiente,
-            "razaosocial" => $uf,
-            "siglaUF" => $nome,
-            "cnpj" => $cnpj,
-            "schemes" => "PL_009_V4",
-            "versao" => "4.00",
-            "tokenIBPT" => "",
-            "CSC" => "",
-            "CSCid" => "",
-            "aProxyConf" => [
-                "proxyIp" => "",
-                "proxyPort" => "",
-                "proxyUser" => "",
-                "proxyPass" => ""
-            ]
-        ];
-    }
-
-    public function getCertificate(
-        string $path,
-        string $password,
-        string $cnpj,
-        string $nome,
-        string $uf,
-        int $ambiente = 2
-    ) {
-        if (!file_exists($path)) {
-            throw new \Exception("Certificado não encontrado");
-        }
-
-        if (empty($password)) {
+        if (empty($dto->password())) {
             throw new \Exception("Senha do certificado não informada");
         }
 
+        if (!file_exists($dto->path())) {
+            throw new \Exception("Certificado não encontrado");
+        }
+
         try {
-            $config = $this->getCertificateConfiguration($cnpj, $nome, $uf, $ambiente);
-            $certificate = Certificate::readPfx($path, $password);
-            return new Tools(json_encode($config), $certificate);
+            $config = [
+                "atualizacao" => date('Y-m-d H:i:s'),
+                "tpAmb" => $dto->ambiente(),
+                "razaosocial" => $dto->razaoSocial(),
+                "siglaUF" => $dto->uf(),
+                "cnpj" => $dto->cnpj(),
+                "schemes" => "PL_009_V4",
+                "versao" => "4.00",
+                "tokenIBPT" => "",
+                "CSC" => "",
+                "CSCid" => "",
+                "aProxyConf" => [
+                    "proxyIp" => "",
+                    "proxyPort" => "",
+                    "proxyUser" => "",
+                    "proxyPass" => ""
+                ]
+            ];
+
+            return new Tools(json_encode($config), Certificate::readPfx($dto->path(), $dto->password()));
         } catch (\Throwable $th) {
             throw $th;
         }

@@ -2,57 +2,56 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit;
+namespace NotaFiscal;
 
-use NotaFiscal\NotaFiscalBase;
+use Exception;
+use NFePHP\NFe\Tools;
+use NotaFiscal\Dto\CertificateParamsDto;
 use PHPUnit\Framework\TestCase;
+use stdClass;
+use TypeError;
 
 class NotaFiscalBaseTest extends TestCase
 {
-    public function testGetCertificateConfiguration(): void
+    public function testGetCertificateWithInvalidPath(): void
     {
         $notaFiscalBase = new NotaFiscalBase();
+        $dto = CertificateParamsDto::create(
+            'invalid/path',
+            'password',
+            '12345678901234',
+            'Razão Social',
+            'UF',
+            2);
 
-        $cnpj = '1234567890';
-        $nome = 'Empresa Teste';
-        $uf = 'SP';
-        $ambiente = 2;
-
-        $expectedConfiguration = [
-            "atualizacao" => date('Y-m-d H:i:s'),
-            "tpAmb" => $ambiente,
-            "razaosocial" => $uf,
-            "siglaUF" => $nome,
-            "cnpj" => $cnpj,
-            "schemes" => "PL_009_V4",
-            "versao" => "4.00",
-            "tokenIBPT" => "",
-            "CSC" => "",
-            "CSCid" => "",
-            "aProxyConf" => [
-                "proxyIp" => "",
-                "proxyPort" => "",
-                "proxyUser" => "",
-                "proxyPass" => ""
-            ]
-        ];
-
-        $this->assertSame($expectedConfiguration, $notaFiscalBase->getCertificateConfiguration($cnpj, $nome, $uf, $ambiente));
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage("Certificado não encontrado");
+        $notaFiscalBase->getCertificate($dto);
     }
 
-    public function testGetCertificate(): void
+    public function testGetCertificateWithEmptyPassword(): void
     {
         $notaFiscalBase = new NotaFiscalBase();
+        $dto = CertificateParamsDto::create(
+            'path/to/certificate.pfx',
+            '',
+            '12345678901234',
+            'Razão Social',
+            'UF',
+            2
+        );
 
-        $path = '/path/to/certificate.pfx';
-        $password = 'password';
-        $cnpj = '1234567890';
-        $nome = 'Empresa Teste';
-        $uf = 'SP';
-        $ambiente = 2;
+        $this->expectException(Exception::class);
+        $this->expectExceptionMessage("Senha do certificado não informada");
+        $notaFiscalBase->getCertificate($dto);
+    }
 
-        $this->expectException(\Exception::class);
-        $this->expectExceptionMessage("Certificado não encontrado");
-        $notaFiscalBase->getCertificate($path, $password, $cnpj, $nome, $uf, $ambiente);
+    public function testGetCertificateWithInvalidDto(): void
+    {
+        $notaFiscalBase = new NotaFiscalBase();
+        $dto = new stdClass();
+
+        $this->expectException(TypeError::class);
+        $notaFiscalBase->getCertificate($dto);
     }
 }

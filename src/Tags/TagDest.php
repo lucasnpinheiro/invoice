@@ -19,7 +19,7 @@ class TagDest extends Base
         private ?string $CNPJ = null,
     ) {
 
-        $CPF_CNPJ = preg_replace('/[^0-9]/', '', $CPF_CNPJ);
+        $CPF_CNPJ = preg_replace('/\D/', '', $CPF_CNPJ);
 
         if (strlen($CPF_CNPJ) === 11) {
             $this->CPF = $CPF_CNPJ;

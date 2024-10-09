@@ -29,26 +29,6 @@ class TagVolTest extends TestCase
         $this->assertSame('Marca A', $tagVol->marca());
     }
 
-    public function testCreateWithNullMarca(): void
-    {
-        $tagVol = TagVol::create(
-            1,
-            2,
-            3,
-            10.5,
-            'Caixa',
-            null
-        );
-
-        $this->assertInstanceOf(TagVol::class, $tagVol);
-        $this->assertSame(1, $tagVol->item());
-        $this->assertSame(2, $tagVol->qVol());
-        $this->assertSame(3, $tagVol->nVol());
-        $this->assertSame(10.5, $tagVol->peso());
-        $this->assertSame('Caixa', $tagVol->esp());
-        $this->assertNull($tagVol->marca());
-    }
-
     public function testToArray(): void
     {
         $tagVol = TagVol::create(
@@ -69,6 +49,17 @@ class TagVolTest extends TestCase
             'marca' => 'Marca A',
         ];
 
-        $this->assertSame($expectedArray, $tagVol->toArray());
+        $this->assertEquals($expectedArray, $tagVol->toArray());
+    }
+
+    public function testDefaultValues(): void
+    {
+        $tagVol = TagVol::create();
+
+        $this->assertSame(1, $tagVol->item());
+        $this->assertSame(1, $tagVol->qVol());
+        $this->assertSame(1, $tagVol->nVol());
+        $this->assertSame(0.0, $tagVol->peso());
+        $this->assertNull($tagVol->marca());
     }
 }

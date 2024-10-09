@@ -21,7 +21,7 @@ class TagVol extends Base
         int $qVol = 1,
         int $nVol = 1,
         float $peso = 0,
-        string $esp,
+        string $esp = 'VOLUME',
         ?string $marca = null
     ): self {
         return new self(
