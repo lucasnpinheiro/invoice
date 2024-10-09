@@ -28,6 +28,16 @@ class TagCest extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'item' => $this->item(),
+            'CEST' => $this->CEST(),
+            'indEscala' => $this->indEscala(),
+            'CNPJFab' => $this->CNPJFab(),
+        ];
+    }
+
     public function item(): int
     {
         return $this->item;
@@ -46,15 +56,5 @@ class TagCest extends Base
     public function CNPJFab(): ?string
     {
         return $this->CNPJFab;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'item' => $this->item(),
-            'CEST' => $this->CEST(),
-            'indEscala' => $this->indEscala(),
-            'CNPJFab' => $this->CNPJFab(),
-        ];
     }
 }

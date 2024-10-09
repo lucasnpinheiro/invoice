@@ -34,6 +34,18 @@ class TagInfRespTec extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'CNPJ' => $this->CNPJ(),
+            'xContato' => $this->xContato(),
+            'email' => $this->email(),
+            'fone' => $this->fone(),
+            'CSRT' => $this->CSRT(),
+            'idCSRT' => $this->idCSRT(),
+        ];
+    }
+
     public function CNPJ(): string
     {
         return $this->CNPJ;
@@ -62,18 +74,6 @@ class TagInfRespTec extends Base
     public function idCSRT(): ?string
     {
         return $this->idCSRT;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'CNPJ' => $this->CNPJ(),
-            'xContato' => $this->xContato(),
-            'email' => $this->email(),
-            'fone' => $this->fone(),
-            'CSRT' => $this->CSRT(),
-            'idCSRT' => $this->idCSRT(),
-        ];
     }
 
 }

@@ -6,6 +6,7 @@ namespace NotaFiscal\Tests\Unit\Tags;
 
 use NotaFiscal\Tags\TagRefNfe;
 use PHPUnit\Framework\TestCase;
+use stdClass;
 
 class TagRefNfeTest extends TestCase
 {
@@ -39,7 +40,7 @@ class TagRefNfeTest extends TestCase
     {
         $tagRefNfe = TagRefNfe::create('1234567890');
 
-        $expectedObject = new \stdClass();
+        $expectedObject = new stdClass();
         $expectedObject->refNFe = '1234567890';
 
         $this->assertEquals($expectedObject, $tagRefNfe->toObject());

@@ -43,6 +43,21 @@ class TagEmit extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'xNome' => $this->xNome(),
+            'xFant' => $this->xFant(),
+            'IE' => $this->IE(),
+            'CRT' => $this->CRT(),
+            'CNPJ' => $this->CNPJ(),
+            'IEST' => $this->IEST(),
+            'IM' => $this->IM(),
+            'CNAE' => $this->CNAE(),
+            'CPF' => $this->CPF()
+        ];
+    }
+
     public function xNome(): string
     {
         return $this->xNome;
@@ -86,20 +101,5 @@ class TagEmit extends Base
     public function CPF(): ?string
     {
         return $this->CPF;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'xNome' => $this->xNome(),
-            'xFant' => $this->xFant(),
-            'IE' => $this->IE(),
-            'CRT' => $this->CRT(),
-            'CNPJ' => $this->CNPJ(),
-            'IEST' => $this->IEST(),
-            'IM' => $this->IM(),
-            'CNAE' => $this->CNAE(),
-            'CPF' => $this->CPF()
-        ];
     }
 }

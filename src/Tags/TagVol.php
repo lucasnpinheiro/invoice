@@ -34,6 +34,18 @@ class TagVol extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'item' => $this->item(),
+            'qVol' => $this->qVol(),
+            'nVol' => $this->nVol(),
+            'peso' => $this->peso(),
+            'esp' => $this->esp(),
+            'marca' => $this->marca(),
+        ];
+    }
+
     public function item(): int
     {
         return $this->item;
@@ -62,17 +74,5 @@ class TagVol extends Base
     public function marca(): ?string
     {
         return $this->marca;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'item' => $this->item(),
-            'qVol' => $this->qVol(),
-            'nVol' => $this->nVol(),
-            'peso' => $this->peso(),
-            'esp' => $this->esp(),
-            'marca' => $this->marca(),
-        ];
     }
 }

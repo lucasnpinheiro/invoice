@@ -19,15 +19,15 @@ class TagPag extends Base
         );
     }
 
-    public function vTroco(): ?float
-    {
-        return $this->vTroco;
-    }
-
     public function toArray(): array
     {
         return [
             'vTroco' => $this->vTroco(),
         ];
+    }
+
+    public function vTroco(): ?float
+    {
+        return $this->vTroco;
     }
 }

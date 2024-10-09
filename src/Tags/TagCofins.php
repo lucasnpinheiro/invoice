@@ -37,6 +37,19 @@ class TagCofins extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'item' => $this->item(),
+            'CST' => $this->CST(),
+            'vCOFINS' => $this->vCOFINS(),
+            'vBC' => $this->vBC(),
+            'pCOFINS' => $this->pCOFINS(),
+            'qBCProd' => $this->qBCProd(),
+            'vAliqProd' => $this->vAliqProd(),
+        ];
+    }
+
     public function item(): int
     {
         return $this->item;
@@ -70,19 +83,5 @@ class TagCofins extends Base
     public function vAliqProd(): ?float
     {
         return $this->vAliqProd;
-    }
-
-
-    public function toArray(): array
-    {
-        return [
-            'item' => $this->item(),
-            'CST' => $this->CST(),
-            'vCOFINS' => $this->vCOFINS(),
-            'vBC' => $this->vBC(),
-            'pCOFINS' => $this->pCOFINS(),
-            'qBCProd' => $this->qBCProd(),
-            'vAliqProd' => $this->vAliqProd(),
-        ];
     }
 }

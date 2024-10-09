@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NotaFiscal\Tests\Unit\Tags;
 
+use DateTime;
 use NotaFiscal\Tags\TagDup;
 use PHPUnit\Framework\TestCase;
 
@@ -21,7 +22,7 @@ class TagDupTest extends TestCase
 
     public function testCreateWithDateTime(): void
     {
-        $dVenc = new \DateTime('2022-01-01');
+        $dVenc = new DateTime('2022-01-01');
         $tagDup = TagDup::create('DUP123', $dVenc, 50.0);
 
         $this->assertInstanceOf(TagDup::class, $tagDup);

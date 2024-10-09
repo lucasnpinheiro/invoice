@@ -91,6 +91,37 @@ class TagProd extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'item' => $this->item(),
+            'cEAN' => $this->cEAN(),
+            'cEANTrib' => $this->cEANTrib(),
+            'cProd' => $this->cProd(),
+            'xProd' => $this->xProd(),
+            'NCM' => $this->NCM(),
+            'CFOP' => $this->CFOP(),
+            'uCom' => $this->uCom(),
+            'qCom' => $this->qCom(),
+            'vUnCom' => $this->vUnCom(),
+            'vProd' => $this->vProd(),
+            'uTrib' => $this->uTrib(),
+            'qTrib' => $this->qTrib(),
+            'vUnTrib' => $this->vUnTrib(),
+            'nItemPed' => $this->nItemPed(),
+            'indTot' => $this->indTot(),
+            'vFrete' => $this->vFrete(),
+            'vDesc' => $this->vDesc(),
+            'vOutro' => $this->vOutro(),
+            'vSeg' => $this->vSeg(),
+            'cBarra' => $this->cBarra(),
+            'cBenef' => $this->cBenef(),
+            'EXTIPI' => $this->EXTIPI(),
+            'cBarraTrib' => $this->cBarraTrib(),
+            'xPed' => $this->xPed()
+        ];
+    }
+
     public function item(): int
     {
         return $this->item;
@@ -214,37 +245,5 @@ class TagProd extends Base
     public function xPed(): ?string
     {
         return $this->xPed;
-    }
-
-
-    public function toArray(): array
-    {
-        return [
-            'item' => $this->item(),
-            'cEAN' => $this->cEAN(),
-            'cEANTrib' => $this->cEANTrib(),
-            'cProd' => $this->cProd(),
-            'xProd' => $this->xProd(),
-            'NCM' => $this->NCM(),
-            'CFOP' => $this->CFOP(),
-            'uCom' => $this->uCom(),
-            'qCom' => $this->qCom(),
-            'vUnCom' => $this->vUnCom(),
-            'vProd' => $this->vProd(),
-            'uTrib' => $this->uTrib(),
-            'qTrib' => $this->qTrib(),
-            'vUnTrib' => $this->vUnTrib(),
-            'nItemPed' => $this->nItemPed(),
-            'indTot' => $this->indTot(),
-            'vFrete' => $this->vFrete(),
-            'vDesc' => $this->vDesc(),
-            'vOutro' => $this->vOutro(),
-            'vSeg' => $this->vSeg(),
-            'cBarra' => $this->cBarra(),
-            'cBenef' => $this->cBenef(),
-            'EXTIPI' => $this->EXTIPI(),
-            'cBarraTrib' => $this->cBarraTrib(),
-            'xPed' => $this->xPed()
-        ];
     }
 }

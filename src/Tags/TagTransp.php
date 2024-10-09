@@ -19,15 +19,15 @@ class TagTransp extends Base
         );
     }
 
-    public function modFrete(): int
-    {
-        return $this->modFrete;
-    }
-
     public function toArray(): array
     {
         return [
             'refNFe' => $this->modFrete(),
         ];
+    }
+
+    public function modFrete(): int
+    {
+        return $this->modFrete;
     }
 }

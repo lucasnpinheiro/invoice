@@ -36,6 +36,31 @@ class TagIcmsTotal extends Base
         $this->aplicarIpi();
     }
 
+    public function aplicarIpi(): void
+    {
+        if ($this->destacaIpi()) {
+            $this->vIPIDevol = 0;
+            return;
+        }
+
+        if ($this->finalidadeNfe() !== 4) {
+            $this->vIPIDevol = 0;
+            return;
+        }
+
+        $this->vIPI = 0;
+    }
+
+    public function destacaIpi(): bool
+    {
+        return $this->destacaIpi;
+    }
+
+    public function finalidadeNfe(): int
+    {
+        return $this->finalidadeNfe;
+    }
+
     public static function create(
         float $vBC = 0,
         float $vICMS = 0,
@@ -90,6 +115,35 @@ class TagIcmsTotal extends Base
             $finalidadeNfe,
             $destacaIpi
         );
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'vBC' => $this->vBC(),
+            'vICMS' => $this->vICMS(),
+            'vICMSDeson' => $this->vICMSDeson(),
+            'vBCST' => $this->vBCST(),
+            'vST' => $this->vST(),
+            'vProd' => $this->vProd(),
+            'vFrete' => $this->vFrete(),
+            'vSeg' => $this->vSeg(),
+            'vDesc' => $this->vDesc(),
+            'vII' => $this->vII(),
+            'vIPI' => $this->vIPI(),
+            'vPIS' => $this->vPIS(),
+            'vCOFINS' => $this->vCOFINS(),
+            'vOutro' => $this->vOutro(),
+            'vNF' => $this->vNF(),
+            'vTotTrib' => $this->vTotTrib(),
+            'vFCPUFDest' => $this->vFCPUFDest(),
+            'vICMSUFDest' => $this->vICMSUFDest(),
+            'vICMSUFRemet' => $this->vICMSUFRemet(),
+            'vFCP' => $this->vFCP(),
+            'vFCPST' => $this->vFCPST(),
+            'vFCPSTRet' => $this->vFCPSTRet(),
+            'vIPIDevol' => $this->vIPIDevol(),
+        ];
     }
 
     public function vBC(): float
@@ -205,59 +259,5 @@ class TagIcmsTotal extends Base
     public function vIPIDevol(): float
     {
         return $this->vIPIDevol;
-    }
-
-    public function finalidadeNfe(): int
-    {
-        return $this->finalidadeNfe;
-    }
-
-    public function destacaIpi(): bool
-    {
-        return $this->destacaIpi;
-    }
-
-    public function aplicarIpi(): void
-    {
-        if ($this->destacaIpi()) {
-            $this->vIPIDevol = 0;
-            return;
-        }
-
-        if ($this->finalidadeNfe() !== 4) {
-            $this->vIPIDevol = 0;
-            return;
-        }
-
-        $this->vIPI = 0;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'vBC' => $this->vBC(),
-            'vICMS' => $this->vICMS(),
-            'vICMSDeson' => $this->vICMSDeson(),
-            'vBCST' => $this->vBCST(),
-            'vST' => $this->vST(),
-            'vProd' => $this->vProd(),
-            'vFrete' => $this->vFrete(),
-            'vSeg' => $this->vSeg(),
-            'vDesc' => $this->vDesc(),
-            'vII' => $this->vII(),
-            'vIPI' => $this->vIPI(),
-            'vPIS' => $this->vPIS(),
-            'vCOFINS' => $this->vCOFINS(),
-            'vOutro' => $this->vOutro(),
-            'vNF' => $this->vNF(),
-            'vTotTrib' => $this->vTotTrib(),
-            'vFCPUFDest' => $this->vFCPUFDest(),
-            'vICMSUFDest' => $this->vICMSUFDest(),
-            'vICMSUFRemet' => $this->vICMSUFRemet(),
-            'vFCP' => $this->vFCP(),
-            'vFCPST' => $this->vFCPST(),
-            'vFCPSTRet' => $this->vFCPSTRet(),
-            'vIPIDevol' => $this->vIPIDevol(),
-        ];
     }
 }

@@ -109,131 +109,6 @@ class TagIcmsSn extends Base
         );
     }
 
-    public function item(): int
-    {
-        return $this->item;
-    }
-    public function orig(): int
-    {
-        return $this->orig;
-    }
-    public function CSOSN(): string
-    {
-        return $this->CSOSN;
-    }
-    public function CST(): string
-    {
-        return $this->CST;
-    }
-    public function vBCST(): float
-    {
-        return $this->vBCST;
-    }
-    public function pICMSST(): float
-    {
-        return $this->pICMSST;
-    }
-    public function vICMSST(): float
-    {
-        return $this->vICMSST;
-    }
-    public function vBC(): float
-    {
-        return $this->vBC;
-    }
-    public function pICMS(): float
-    {
-        return $this->pICMS;
-    }
-    public function vICMS(): float
-    {
-        return $this->vICMS;
-    }
-    public function pMVAST(): float
-    {
-        return $this->pMVAST;
-    }
-    public function pCredSN(): ?float
-    {
-        return $this->pCredSN;
-    }
-    public function vCredICMSSN(): ?float
-    {
-        return $this->vCredICMSSN;
-    }
-    public function modBCST(): ?int
-    {
-        return $this->modBCST;
-    }
-    public function pRedBCST(): ?float
-    {
-        return $this->pRedBCST;
-    }
-    public function vBCFCPST(): ?float
-    {
-        return $this->vBCFCPST;
-    }
-    public function pFCPST(): ?float
-    {
-        return $this->pFCPST;
-    }
-    public function vFCPST(): ?float
-    {
-        return $this->vFCPST;
-    }
-    public function vBCSTRet(): ?float
-    {
-        return $this->vBCSTRet;
-    }
-    public function pST(): ?float
-    {
-        return $this->pST;
-    }
-    public function vICMSSTRet(): ?float
-    {
-        return $this->vICMSSTRet;
-    }
-    public function vBCFCPSTRet(): ?float
-    {
-        return $this->vBCFCPSTRet;
-    }
-    public function pFCPSTRet(): ?float
-    {
-        return $this->pFCPSTRet;
-    }
-    public function vFCPSTRet(): ?float
-    {
-        return $this->vFCPSTRet;
-    }
-    public function modBC(): ?int
-    {
-        return $this->modBC;
-    }
-    public function pRedBC(): ?float
-    {
-        return $this->pRedBC;
-    }
-    public function pRedBCEfet(): ?float
-    {
-        return $this->pRedBCEfet;
-    }
-    public function vBCEfet(): ?float
-    {
-        return $this->vBCEfet;
-    }
-    public function pICMSEfet(): ?float
-    {
-        return $this->pICMSEfet;
-    }
-    public function vICMSEfet(): ?float
-    {
-        return $this->vICMSEfet;
-    }
-    public function vICMSSubstituto(): ?float
-    {
-        return $this->vICMSSubstituto;
-    }
-
     public function csosn900()
     {
         if ($this->CSOSN() != '900') {
@@ -248,6 +123,16 @@ class TagIcmsSn extends Base
             $this->vBCST = 0;
             $this->vICMSST = 0;
         }
+    }
+
+    public function CSOSN(): string
+    {
+        return $this->CSOSN;
+    }
+
+    public function vBCST(): float
+    {
+        return $this->vBCST;
     }
 
     public function csosn500()
@@ -298,5 +183,150 @@ class TagIcmsSn extends Base
             'vICMSEfet' => $this->vICMSEfet(),
             'vICMSSubstituto' => $this->vICMSSubstituto(),
         ];
+    }
+
+    public function item(): int
+    {
+        return $this->item;
+    }
+
+    public function orig(): int
+    {
+        return $this->orig;
+    }
+
+    public function CST(): string
+    {
+        return $this->CST;
+    }
+
+    public function pICMSST(): float
+    {
+        return $this->pICMSST;
+    }
+
+    public function vICMSST(): float
+    {
+        return $this->vICMSST;
+    }
+
+    public function vBC(): float
+    {
+        return $this->vBC;
+    }
+
+    public function pICMS(): float
+    {
+        return $this->pICMS;
+    }
+
+    public function vICMS(): float
+    {
+        return $this->vICMS;
+    }
+
+    public function pMVAST(): float
+    {
+        return $this->pMVAST;
+    }
+
+    public function pCredSN(): ?float
+    {
+        return $this->pCredSN;
+    }
+
+    public function vCredICMSSN(): ?float
+    {
+        return $this->vCredICMSSN;
+    }
+
+    public function modBCST(): ?int
+    {
+        return $this->modBCST;
+    }
+
+    public function pRedBCST(): ?float
+    {
+        return $this->pRedBCST;
+    }
+
+    public function vBCFCPST(): ?float
+    {
+        return $this->vBCFCPST;
+    }
+
+    public function pFCPST(): ?float
+    {
+        return $this->pFCPST;
+    }
+
+    public function vFCPST(): ?float
+    {
+        return $this->vFCPST;
+    }
+
+    public function vBCSTRet(): ?float
+    {
+        return $this->vBCSTRet;
+    }
+
+    public function pST(): ?float
+    {
+        return $this->pST;
+    }
+
+    public function vICMSSTRet(): ?float
+    {
+        return $this->vICMSSTRet;
+    }
+
+    public function vBCFCPSTRet(): ?float
+    {
+        return $this->vBCFCPSTRet;
+    }
+
+    public function pFCPSTRet(): ?float
+    {
+        return $this->pFCPSTRet;
+    }
+
+    public function vFCPSTRet(): ?float
+    {
+        return $this->vFCPSTRet;
+    }
+
+    public function modBC(): ?int
+    {
+        return $this->modBC;
+    }
+
+    public function pRedBC(): ?float
+    {
+        return $this->pRedBC;
+    }
+
+    public function pRedBCEfet(): ?float
+    {
+        return $this->pRedBCEfet;
+    }
+
+    public function vBCEfet(): ?float
+    {
+        return $this->vBCEfet;
+    }
+
+    public function pICMSEfet(): ?float
+    {
+        return $this->pICMSEfet;
+    }
+
+    public function vICMSEfet(): ?float
+    {
+        return $this->vICMSEfet;
+    }
+
+    public function vICMSSubstituto(): ?float
+    {
+        return $this->vICMSSubstituto;
     }
 }

@@ -19,15 +19,15 @@ class TagRefNfe extends Base
         );
     }
 
-    public function refNFe(): string
-    {
-        return $this->refNFe;
-    }
-
     public function toArray(): array
     {
         return [
             'refNFe' => $this->refNFe(),
         ];
+    }
+
+    public function refNFe(): string
+    {
+        return $this->refNFe;
     }
 }

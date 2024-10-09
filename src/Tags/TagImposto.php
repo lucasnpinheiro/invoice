@@ -22,20 +22,21 @@ class TagImposto extends Base
         );
     }
 
-    public function item(): int
-    {
-        return $this->item;
-    }
-    public function vTotTrib(): string
-    {
-        return $this->vTotTrib;
-    }
-
     public function toArray(): array
     {
         return [
             'item' => $this->item(),
             'vTotTrib' => $this->vTotTrib(),
         ];
+    }
+
+    public function item(): int
+    {
+        return $this->item;
+    }
+
+    public function vTotTrib(): string
+    {
+        return $this->vTotTrib;
     }
 }

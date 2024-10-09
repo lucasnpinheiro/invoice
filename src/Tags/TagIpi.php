@@ -24,6 +24,22 @@ class TagIpi extends Base
         $this->aplicarIpi();
     }
 
+    public function aplicarIpi(): void
+    {
+        if ($this->destacaIpi()) {
+            return;
+        }
+
+        $this->vIPI = 0;
+        $this->vBC = 0;
+        $this->pIPI = 0;
+    }
+
+    public function destacaIpi(): bool
+    {
+        return $this->destacaIpi;
+    }
+
     public static function create(
         int $item,
         string $cEnq,
@@ -54,6 +70,25 @@ class TagIpi extends Base
             $qUnid,
             $vUnid
         );
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'item' => $this->item(),
+            'cEnq' => $this->cEnq(),
+            'CST' => $this->CST(),
+            'vIPI' => $this->vIPI(),
+            'vBC' => $this->vBC(),
+            'pIPI' => $this->pIPI(),
+            'destacaIpi' => $this->destacaIpi(),
+            'clEnq' => $this->clEnq(),
+            'CNPJProd' => $this->CNPJProd(),
+            'cSelo' => $this->cSelo(),
+            'qSelo' => $this->qSelo(),
+            'qUnid' => $this->qUnid(),
+            'vUnid' => $this->vUnid(),
+        ];
     }
 
     public function item(): int
@@ -114,40 +149,5 @@ class TagIpi extends Base
     public function vUnid(): ?float
     {
         return $this->vUnid;
-    }
-
-    public function destacaIpi(): bool
-    {
-        return $this->destacaIpi;
-    }
-
-    public function aplicarIpi(): void
-    {
-        if ($this->destacaIpi()) {
-            return;
-        }
-
-        $this->vIPI = 0;
-        $this->vBC = 0;
-        $this->pIPI = 0;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'item' => $this->item(),
-            'cEnq' => $this->cEnq(),
-            'CST' => $this->CST(),
-            'vIPI' => $this->vIPI(),
-            'vBC' => $this->vBC(),
-            'pIPI' => $this->pIPI(),
-            'destacaIpi' => $this->destacaIpi(),
-            'clEnq' => $this->clEnq(),
-            'CNPJProd' => $this->CNPJProd(),
-            'cSelo' => $this->cSelo(),
-            'qSelo' => $this->qSelo(),
-            'qUnid' => $this->qUnid(),
-            'vUnid' => $this->vUnid(),
-        ];
     }
 }

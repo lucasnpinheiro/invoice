@@ -37,6 +37,19 @@ class TagDetPag extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'tPag' => $this->tPag(),
+            'indPag' => $this->indPag(),
+            'tBand' => $this->tBand(),
+            'cAut' => $this->cAut(),
+            'CNPJ' => $this->CNPJ(),
+            'vPag' => $this->vPag(),
+            'tpIntegra' => $this->tpIntegra(),
+        ];
+    }
+
     public function tPag(): string
     {
         return $this->tPag;
@@ -70,19 +83,6 @@ class TagDetPag extends Base
     public function tpIntegra(): ?int
     {
         return $this->tpIntegra;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'tPag' => $this->tPag(),
-            'indPag' => $this->indPag(),
-            'tBand' => $this->tBand(),
-            'cAut' => $this->cAut(),
-            'CNPJ' => $this->CNPJ(),
-            'vPag' => $this->vPag(),
-            'tpIntegra' => $this->tpIntegra(),
-        ];
     }
 
 }

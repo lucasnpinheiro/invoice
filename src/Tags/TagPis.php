@@ -37,6 +37,19 @@ class TagPis extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'item' => $this->item(),
+            'CST' => $this->CST(),
+            'vBC' => $this->vBC(),
+            'pPIS' => $this->pPIS(),
+            'vPIS' => $this->vPIS(),
+            'qBCProd' => $this->qBCProd(),
+            'vAliqProd' => $this->vAliqProd(),
+        ];
+    }
+
     public function item(): int
     {
         return $this->item;
@@ -70,18 +83,5 @@ class TagPis extends Base
     public function vAliqProd(): ?string
     {
         return $this->vAliqProd;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'item' => $this->item(),
-            'CST' => $this->CST(),
-            'vBC' => $this->vBC(),
-            'pPIS' => $this->pPIS(),
-            'vPIS' => $this->vPIS(),
-            'qBCProd' => $this->qBCProd(),
-            'vAliqProd' => $this->vAliqProd(),
-        ];
     }
 }

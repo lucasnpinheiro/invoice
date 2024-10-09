@@ -25,6 +25,15 @@ class TagInfNfe extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'versao' => $this->versao(),
+            'pk_nItem' => $this->pkNItem(),
+            'Id' => $this->id()
+        ];
+    }
+
     public function versao(): string
     {
         return $this->versao;
@@ -38,14 +47,5 @@ class TagInfNfe extends Base
     public function id(): ?string
     {
         return $this->id;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'versao' => $this->versao(),
-            'pk_nItem' => $this->pkNItem(),
-            'Id' => $this->id()
-        ];
     }
 }

@@ -139,6 +139,53 @@ class TagIcms extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'item' => $this->item(),
+            'orig' => $this->orig(),
+            'CST' => $this->CST(),
+            'modBC' => $this->modBC(),
+            'vBC' => $this->vBC(),
+            'pICMS' => $this->pICMS(),
+            'vICMS' => $this->vICMS(),
+            'pMVAST' => $this->pMVAST(),
+            'vBCST' => $this->vBCST(),
+            'pICMSST' => $this->pICMSST(),
+            'vICMSST' => $this->vICMSST(),
+            'pFCP' => $this->pFCP(),
+            'vFCP' => $this->vFCP(),
+            'vBCFCP' => $this->vBCFCP(),
+            'modBCST' => $this->modBCST(),
+            'pRedBCST' => $this->pRedBCST(),
+            'vBCFCPST' => $this->vBCFCPST(),
+            'pFCPST' => $this->pFCPST(),
+            'vFCPST' => $this->vFCPST(),
+            'vICMSDeson' => $this->vICMSDeson(),
+            'motDesICMS' => $this->motDesICMS(),
+            'pRedBC' => $this->pRedBC(),
+            'vICMSOp' => $this->vICMSOp(),
+            'pDif' => $this->pDif(),
+            'vICMSDif' => $this->vICMSDif(),
+            'vBCSTRet' => $this->vBCSTRet(),
+            'pST' => $this->pST(),
+            'vICMSSTRet' => $this->vICMSSTRet(),
+            'vBCFCPSTRet' => $this->vBCFCPSTRet(),
+            'pFCPSTRet' => $this->pFCPSTRet(),
+            'vFCPSTRet' => $this->vFCPSTRet(),
+            'pRedBCEfet' => $this->pRedBCEfet(),
+            'vBCEfet' => $this->vBCEfet(),
+            'pICMSEfet' => $this->pICMSEfet(),
+            'vICMSEfet' => $this->vICMSEfet(),
+            'vICMSSubstituto' => $this->vICMSSubstituto(),
+            'vICMSSTDeson' => $this->vICMSSTDeson(),
+            'motDesICMSST' => $this->motDesICMSST(),
+            'pFCPDif' => $this->pFCPDif(),
+            'vFCPDif' => $this->vFCPDif(),
+            'vFCPEfet' => $this->vFCPEfet(),
+        ];
+    }
+
     public function item(): int
     {
         return $this->item;
@@ -342,52 +389,5 @@ class TagIcms extends Base
     public function vFCPEfet(): ?string
     {
         return $this->vFCPEfet;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'item' => $this->item(),
-            'orig' => $this->orig(),
-            'CST' => $this->CST(),
-            'modBC' => $this->modBC(),
-            'vBC' => $this->vBC(),
-            'pICMS' => $this->pICMS(),
-            'vICMS' => $this->vICMS(),
-            'pMVAST' => $this->pMVAST(),
-            'vBCST' => $this->vBCST(),
-            'pICMSST' => $this->pICMSST(),
-            'vICMSST' => $this->vICMSST(),
-            'pFCP' => $this->pFCP(),
-            'vFCP' => $this->vFCP(),
-            'vBCFCP' => $this->vBCFCP(),
-            'modBCST' => $this->modBCST(),
-            'pRedBCST' => $this->pRedBCST(),
-            'vBCFCPST' => $this->vBCFCPST(),
-            'pFCPST' => $this->pFCPST(),
-            'vFCPST' => $this->vFCPST(),
-            'vICMSDeson' => $this->vICMSDeson(),
-            'motDesICMS' => $this->motDesICMS(),
-            'pRedBC' => $this->pRedBC(),
-            'vICMSOp' => $this->vICMSOp(),
-            'pDif' => $this->pDif(),
-            'vICMSDif' => $this->vICMSDif(),
-            'vBCSTRet' => $this->vBCSTRet(),
-            'pST' => $this->pST(),
-            'vICMSSTRet' => $this->vICMSSTRet(),
-            'vBCFCPSTRet' => $this->vBCFCPSTRet(),
-            'pFCPSTRet' => $this->pFCPSTRet(),
-            'vFCPSTRet' => $this->vFCPSTRet(),
-            'pRedBCEfet' => $this->pRedBCEfet(),
-            'vBCEfet' => $this->vBCEfet(),
-            'pICMSEfet' => $this->pICMSEfet(),
-            'vICMSEfet' => $this->vICMSEfet(),
-            'vICMSSubstituto' => $this->vICMSSubstituto(),
-            'vICMSSTDeson' => $this->vICMSSTDeson(),
-            'motDesICMSST' => $this->motDesICMSST(),
-            'pFCPDif' => $this->pFCPDif(),
-            'vFCPDif' => $this->vFCPDif(),
-            'vFCPEfet' => $this->vFCPEfet(),
-        ];
     }
 }

@@ -22,6 +22,14 @@ class TagInfAdic extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'infAdFisco' => $this->infAdFisco(),
+            'infCpl' => $this->infCpl(),
+        ];
+    }
+
     public function infAdFisco(): ?string
     {
         return $this->infAdFisco;
@@ -30,13 +38,5 @@ class TagInfAdic extends Base
     public function infCpl(): ?string
     {
         return $this->infCpl;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'infAdFisco' => $this->infAdFisco(),
-            'infCpl' => $this->infCpl(),
-        ];
     }
 }

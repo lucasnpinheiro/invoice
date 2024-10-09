@@ -34,6 +34,19 @@ class TagTransportadora extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'xNome' => $this->xNome(),
+            'IE' => $this->IE(),
+            'xEnder' => $this->xEnder(),
+            'xMun' => $this->xMun(),
+            'UF' => $this->UF(),
+            'CPF' => $this->CPF(),
+            'CNPJ' => $this->CNPJ(),
+        ];
+    }
+
     public function xNome(): string
     {
         return $this->xNome;
@@ -61,8 +74,9 @@ class TagTransportadora extends Base
 
     public function CPF(): ?string
     {
-        if (empty($this->CPF_CNPJ))
+        if (empty($this->CPF_CNPJ)) {
             return null;
+        }
 
         $cpf = preg_replace('/[^0-9]/', '', $this->CPF_CNPJ);
         return strlen($cpf) === 11 ? $cpf : null;
@@ -70,23 +84,11 @@ class TagTransportadora extends Base
 
     public function CNPJ(): ?string
     {
-        if (empty($this->CPF_CNPJ))
+        if (empty($this->CPF_CNPJ)) {
             return null;
+        }
 
         $cnpj = preg_replace('/[^0-9]/', '', $this->CPF_CNPJ);
         return strlen($cnpj) === 14 ? $cnpj : null;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'xNome' => $this->xNome(),
-            'IE' => $this->IE(),
-            'xEnder' => $this->xEnder(),
-            'xMun' => $this->xMun(),
-            'UF' => $this->UF(),
-            'CPF' => $this->CPF(),
-            'CNPJ' => $this->CNPJ(),
-        ];
     }
 }

@@ -4,18 +4,20 @@ declare(strict_types=1);
 
 namespace NotaFiscal\Tags;
 
+use DateTime;
+
 class TagDup extends Base
 {
     private function __construct(
         private string $nDup,
-        private \DateTime|string $dVenc,
+        private DateTime|string $dVenc,
         private float $vDup,
     ) {
     }
 
     public static function create(
         string $nDup,
-        \DateTime|string $dVenc,
+        DateTime|string $dVenc,
         float $vDup,
     ): self {
         return new self(
@@ -25,6 +27,15 @@ class TagDup extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'nDup' => $this->nDup(),
+            'dVenc' => $this->dVenc(),
+            'vDup' => $this->vDup(),
+        ];
+    }
+
     public function nDup(): string
     {
         return $this->nDup;
@@ -32,7 +43,7 @@ class TagDup extends Base
 
     public function dVenc(): string
     {
-        if ($this->dVenc instanceof \DateTime) {
+        if ($this->dVenc instanceof DateTime) {
             return $this->dVenc->format('Y-m-d');
         }
         return $this->dVenc;
@@ -41,14 +52,5 @@ class TagDup extends Base
     public function vDup(): float
     {
         return $this->vDup;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'nDup' => $this->nDup(),
-            'dVenc' => $this->dVenc(),
-            'vDup' => $this->vDup(),
-        ];
     }
 }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NotaFiscal;
 
 use Exception;
-use NFePHP\NFe\Tools;
 use NotaFiscal\Dto\CertificateParamsDto;
 use PHPUnit\Framework\TestCase;
 use stdClass;
@@ -22,7 +21,8 @@ class NotaFiscalBaseTest extends TestCase
             '12345678901234',
             'Razão Social',
             'UF',
-            2);
+            2
+        );
 
         $this->expectException(Exception::class);
         $this->expectExceptionMessage("Certificado não encontrado");

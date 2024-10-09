@@ -88,6 +88,36 @@ class TagIde extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'cUF' => $this->cUF(),
+            'natOp' => $this->natOp(),
+            'mod' => $this->mod(),
+            'serie' => $this->serie(),
+            'nNF' => $this->nNF(),
+            'dhEmi' => $this->dhEmi(),
+            'dhSaiEnt' => $this->dhSaiEnt(),
+            'tpNF' => $this->tpNF(),
+            'idDest' => $this->idDest(),
+            'cMunFG' => $this->cMunFG(),
+            'tpImp' => $this->tpImp(),
+            'tpEmis' => $this->tpEmis(),
+            'tpAmb' => $this->tpAmb(),
+            'finNFe' => $this->finNFe(),
+            'indFinal' => $this->indFinal(),
+            'indPres' => $this->indPres(),
+            'procEmi' => $this->procEmi(),
+            'verProc' => $this->verProc(),
+            'cNF' => $this->cNF(),
+            'indPag' => $this->indPag(),
+            'cDV' => $this->cDV(),
+            'indIntermed' => $this->indIntermed(),
+            'dhCont' => $this->dhCont(),
+            'xJus' => $this->xJus(),
+        ];
+    }
+
     public function cUF(): string
     {
         return $this->cUF;
@@ -206,35 +236,5 @@ class TagIde extends Base
     public function xJus(): ?string
     {
         return $this->xJus;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'cUF' => $this->cUF(),
-            'natOp' => $this->natOp(),
-            'mod' => $this->mod(),
-            'serie' => $this->serie(),
-            'nNF' => $this->nNF(),
-            'dhEmi' => $this->dhEmi(),
-            'dhSaiEnt' => $this->dhSaiEnt(),
-            'tpNF' => $this->tpNF(),
-            'idDest' => $this->idDest(),
-            'cMunFG' => $this->cMunFG(),
-            'tpImp' => $this->tpImp(),
-            'tpEmis' => $this->tpEmis(),
-            'tpAmb' => $this->tpAmb(),
-            'finNFe' => $this->finNFe(),
-            'indFinal' => $this->indFinal(),
-            'indPres' => $this->indPres(),
-            'procEmi' => $this->procEmi(),
-            'verProc' => $this->verProc(),
-            'cNF' => $this->cNF(),
-            'indPag' => $this->indPag(),
-            'cDV' => $this->cDV(),
-            'indIntermed' => $this->indIntermed(),
-            'dhCont' => $this->dhCont(),
-            'xJus' => $this->xJus(),
-        ];
     }
 }

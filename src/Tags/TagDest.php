@@ -18,7 +18,6 @@ class TagDest extends Base
         private ?string $CPF = null,
         private ?string $CNPJ = null,
     ) {
-
         $CPF_CNPJ = preg_replace('/\D/', '', $CPF_CNPJ);
 
         if (strlen($CPF_CNPJ) === 11) {
@@ -28,7 +27,6 @@ class TagDest extends Base
         if (strlen($CPF_CNPJ) === 14) {
             $this->CNPJ = $CPF_CNPJ;
         }
-
     }
 
     public static function create(
@@ -51,6 +49,21 @@ class TagDest extends Base
             $email,
             $idEstrangeiro,
         );
+    }
+
+    public function toArray(): array
+    {
+        return [
+            'xNome' => $this->xNome(),
+            'indIEDest' => $this->indIEDest(),
+            'IE' => $this->IE(),
+            'CPF' => $this->CPF(),
+            'CNPJ' => $this->CNPJ(),
+            'ISUF' => $this->ISUF(),
+            'IM' => $this->IM(),
+            'email' => $this->email(),
+            'idEstrangeiro' => $this->idEstrangeiro(),
+        ];
     }
 
     public function xNome(): string
@@ -96,20 +109,5 @@ class TagDest extends Base
     public function idEstrangeiro(): ?string
     {
         return $this->idEstrangeiro;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'xNome' => $this->xNome(),
-            'indIEDest' => $this->indIEDest(),
-            'IE' => $this->IE(),
-            'CPF' => $this->CPF(),
-            'CNPJ' => $this->CNPJ(),
-            'ISUF' => $this->ISUF(),
-            'IM' => $this->IM(),
-            'email' => $this->email(),
-            'idEstrangeiro' => $this->idEstrangeiro(),
-        ];
     }
 }

@@ -28,6 +28,16 @@ class TagFat extends Base
         );
     }
 
+    public function toArray(): array
+    {
+        return [
+            'nFat' => $this->nFat(),
+            'vOrig' => $this->vOrig(),
+            'vLiq' => $this->vLiq(),
+            'vDesc' => $this->vDesc(),
+        ];
+    }
+
     public function nFat(): string
     {
         return $this->nFat;
@@ -46,15 +56,5 @@ class TagFat extends Base
     public function vDesc(): ?float
     {
         return $this->vDesc;
-    }
-
-    public function toArray(): array
-    {
-        return [
-            'nFat' => $this->nFat(),
-            'vOrig' => $this->vOrig(),
-            'vLiq' => $this->vLiq(),
-            'vDesc' => $this->vDesc(),
-        ];
     }
 }
