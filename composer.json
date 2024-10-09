@@ -8,15 +8,26 @@
             "NotaFiscal\\Tests\\": "tests/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "NotaFiscal\\Tests\\": "tests/"
+        }
+    },
     "authors": [
         {
             "name": "Lucas Nunes Pinto Pinheiro",
             "email": "lucasnpinheiro@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
+   "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
     "scripts": {
-        "test": "phpunit -c phpunit.xml --colors=always --testdox"
+        "test": "phpunit --configuration phpunit.xml",
+        "testdox": "phpunit --configuration phpunit.xml --testdox tests"
     },
     "require-dev": {
         "phpunit/phpunit": "^10"
