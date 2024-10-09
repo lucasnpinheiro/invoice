@@ -10,8 +10,8 @@ class TagVol extends Base
         private int $item = 1,
         private int $qVol = 1,
         private int $nVol = 1,
-        private float $peso = 0,
-        private string $esp,
+        private float $peso = 0.0,
+        private string $esp = 'VOLUME',
         private ?string $marca = null
     ) {
     }
@@ -20,7 +20,7 @@ class TagVol extends Base
         int $item = 1,
         int $qVol = 1,
         int $nVol = 1,
-        float $peso = 0,
+        float $peso = 0.0,
         string $esp = 'VOLUME',
         ?string $marca = null
     ): self {

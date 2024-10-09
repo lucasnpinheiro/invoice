@@ -34,12 +34,12 @@ class TagImpostoTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagImposto = TagImposto::create(1, '100.00');
-
         $expectedArray = [
             'item' => 1,
             'vTotTrib' => '100.00',
         ];
+
+        $tagImposto = TagImposto::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagImposto->toArray());
     }

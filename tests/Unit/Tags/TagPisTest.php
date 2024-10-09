@@ -39,8 +39,6 @@ class TagPisTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagPis = TagPis::create(1, 'CST123', 100.0, 0.5, 50.0, 10.0, '10%');
-
         $expectedArray = [
             'item' => 1,
             'CST' => 'CST123',
@@ -50,6 +48,8 @@ class TagPisTest extends TestCase
             'qBCProd' => 10.0,
             'vAliqProd' => '10%',
         ];
+        $tagPis = TagPis::create(...$expectedArray);
+
 
         $this->assertSame($expectedArray, $tagPis->toArray());
     }

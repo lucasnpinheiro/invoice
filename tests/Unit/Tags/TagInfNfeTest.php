@@ -42,13 +42,13 @@ class TagInfNfeTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagInfNfe = TagInfNfe::create('4.00', '123', '456');
-
         $expectedArray = [
             'versao' => '4.00',
             'pk_nItem' => '123',
             'Id' => '456'
         ];
+
+        $tagInfNfe = TagInfNfe::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagInfNfe->toArray());
     }

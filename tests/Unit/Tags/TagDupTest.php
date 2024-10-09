@@ -33,13 +33,13 @@ class TagDupTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagDup = TagDup::create('DUP123', '2022-01-01', 50.0);
-
         $expectedArray = [
             'nDup' => 'DUP123',
             'dVenc' => '2022-01-01',
             'vDup' => 50.0,
         ];
+
+        $tagDup = TagDup::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagDup->toArray());
     }

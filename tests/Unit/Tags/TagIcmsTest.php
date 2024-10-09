@@ -45,20 +45,6 @@ class TagIcmsTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagIcms = TagIcms::create(
-            1,
-            'orig',
-            'CST',
-            'modBC',
-            'vBC',
-            'pICMS',
-            'vICMS',
-            'pMVAST',
-            'vBCST',
-            'pICMSST',
-            'vICMSST'
-        );
-
         $expectedArray = [
             'item' => 1,
             'orig' => 'orig',
@@ -102,6 +88,8 @@ class TagIcmsTest extends TestCase
             'vFCPDif' => null,
             'vFCPEfet' => null,
         ];
+
+        $tagIcms = TagIcms::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagIcms->toArray());
     }

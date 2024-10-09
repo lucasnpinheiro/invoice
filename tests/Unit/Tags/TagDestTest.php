@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NotaFiscal\Tests\Unit\Tags;
 
+use InvalidArgumentException;
 use NotaFiscal\Tags\TagDest;
 use PHPUnit\Framework\TestCase;
 
@@ -12,52 +13,81 @@ class TagDestTest extends TestCase
     public function testCreate(): void
     {
         $tagDest = TagDest::create(
-            'John Doe',
+            'Test',
             '1',
             '123456789',
             '12345678901',
-            'ISUF123',
-            'IM123',
-            'john@example.com',
-            '123456',
+            '123',
+            '123',
+            'test@example.com',
+            '123'
         );
 
         $this->assertInstanceOf(TagDest::class, $tagDest);
-        $this->assertSame('John Doe', $tagDest->xNome());
-        $this->assertSame('1', $tagDest->indIEDest());
-        $this->assertSame('123456789', $tagDest->IE());
-        $this->assertSame('12345678901', $tagDest->CPF());
-        $this->assertSame('ISUF123', $tagDest->ISUF());
-        $this->assertSame('IM123', $tagDest->IM());
-        $this->assertSame('john@example.com', $tagDest->email());
-        $this->assertSame('123456', $tagDest->idEstrangeiro());
     }
 
     public function testToArray(): void
     {
+        $expectedArray = [
+            'xNome' => 'Test',
+            'indIEDest' => '1',
+            'IE' => '123456789',
+            'CPF_CNPJ' => '12345678901',
+            'ISUF' => '123',
+            'IM' => '123',
+            'email' => 'test@example.com',
+            'idEstrangeiro' => '123',
+        ];
+        $tagDest = TagDest::create(...$expectedArray);
+
+        $this->assertEquals($expectedArray, $tagDest->toArray());
+    }
+
+    public function testIsCpf(): void
+    {
         $tagDest = TagDest::create(
-            'John Doe',
+            'Test',
             '1',
             '123456789',
             '12345678901',
-            'ISUF123',
-            'IM123',
-            'john@example.com',
-            '123456',
+            '123',
+            '123',
+            'test@example.com',
+            '123'
         );
 
-        $expectedArray = [
-            'xNome' => 'John Doe',
-            'indIEDest' => '1',
-            'IE' => '123456789',
-            'CPF' => '12345678901',
-            'CNPJ' => null,
-            'ISUF' => 'ISUF123',
-            'IM' => 'IM123',
-            'email' => 'john@example.com',
-            'idEstrangeiro' => '123456',
-        ];
+        $this->assertTrue($tagDest->isCpf());
+    }
 
-        $this->assertSame($expectedArray, $tagDest->toArray());
+    public function testIsCnpj(): void
+    {
+        $tagDest = TagDest::create(
+            'Test',
+            '1',
+            '123456789',
+            '12345678901234',
+            '123',
+            '123',
+            'test@example.com',
+            '123'
+        );
+
+        $this->assertTrue($tagDest->isCnpj());
+    }
+
+    public function testInvalidCpfCnpj(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        TagDest::create(
+            'Test',
+            '1',
+            '123456789',
+            ' invalid',
+            '123',
+            '123',
+            'test@example.com',
+            '123'
+        );
     }
 }

@@ -14,16 +14,15 @@ class TagTranspTest extends TestCase
         $tagTransp = TagTransp::create(1);
 
         $this->assertInstanceOf(TagTransp::class, $tagTransp);
-        $this->assertSame(1, $tagTransp->modFrete());
+        $this->assertSame(1, $tagTransp->refNFe());
     }
 
     public function testToArray(): void
     {
-        $tagTransp = TagTransp::create(1);
-
         $expectedArray = [
             'refNFe' => 1,
         ];
+        $tagTransp = TagTransp::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagTransp->toArray());
     }

@@ -174,34 +174,6 @@ class TagIcmsTotalTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagIcmsTotal = TagIcmsTotal::create(
-            100.0,
-            50.0,
-            10.0,
-            80.0,
-            20.0,
-            200.0,
-            30.0,
-            40.0,
-            5.0,
-            0.0,
-            15.0,
-            8.0,
-            12.0,
-            2.0,
-            500.0,
-            100.0,
-            50.0,
-            60.0,
-            70.0,
-            5.0,
-            10.0,
-            20.0,
-            3.0,
-            4,
-            true
-        );
-
         $expectedArray = [
             'vBC' => 100.0,
             'vICMS' => 50.0,
@@ -227,6 +199,8 @@ class TagIcmsTotalTest extends TestCase
             'vFCPSTRet' => 20.0,
             'vIPIDevol' => 0.0,
         ];
+
+        $tagIcmsTotal = TagIcmsTotal::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagIcmsTotal->toArray());
     }

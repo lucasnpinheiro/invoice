@@ -33,7 +33,6 @@ class TagFatTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagFat = TagFat::create('FAT123', 100.0, 90.0, 10.0);
 
         $expectedArray = [
             'nFat' => 'FAT123',
@@ -41,6 +40,8 @@ class TagFatTest extends TestCase
             'vLiq' => 90.0,
             'vDesc' => 10.0,
         ];
+
+        $tagFat = TagFat::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagFat->toArray());
     }

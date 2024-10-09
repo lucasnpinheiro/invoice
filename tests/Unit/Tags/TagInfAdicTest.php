@@ -29,12 +29,12 @@ class TagInfAdicTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagInfAdic = TagInfAdic::create('infAdFisco', 'infCpl');
-
         $expectedArray = [
             'infAdFisco' => 'infAdFisco',
             'infCpl' => 'infCpl',
         ];
+
+        $tagInfAdic = TagInfAdic::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagInfAdic->toArray());
     }

@@ -43,21 +43,6 @@ class TagEnderDestTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagEnderDest = TagEnderDest::create(
-            'John Doe',
-            '123 Main St',
-            '456',
-            'Downtown',
-            '12345',
-            'City',
-            'NY',
-            '12345',
-            '123',
-            'Country',
-            '123456789',
-            'Apt 1'
-        );
-
         $expectedArray = [
             'xNome' => 'John Doe',
             'xLgr' => '123 Main St',
@@ -72,6 +57,7 @@ class TagEnderDestTest extends TestCase
             'fone' => '123456789',
             'xCpl' => 'Apt 1',
         ];
+        $tagEnderDest = TagEnderDest::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagEnderDest->toArray());
     }

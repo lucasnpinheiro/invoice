@@ -31,15 +31,6 @@ class TagVolTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagVol = TagVol::create(
-            1,
-            2,
-            3,
-            10.5,
-            'Caixa',
-            'Marca A'
-        );
-
         $expectedArray = [
             'item' => 1,
             'qVol' => 2,
@@ -48,6 +39,7 @@ class TagVolTest extends TestCase
             'esp' => 'Caixa',
             'marca' => 'Marca A',
         ];
+        $tagVol = TagVol::create(...$expectedArray);
 
         $this->assertEquals($expectedArray, $tagVol->toArray());
     }
@@ -56,10 +48,15 @@ class TagVolTest extends TestCase
     {
         $tagVol = TagVol::create();
 
-        $this->assertSame(1, $tagVol->item());
-        $this->assertSame(1, $tagVol->qVol());
-        $this->assertSame(1, $tagVol->nVol());
-        $this->assertSame(0.0, $tagVol->peso());
-        $this->assertNull($tagVol->marca());
+        $expectedArray = [
+            'item' => 1,
+            'qVol' => 1,
+            'nVol' => 1,
+            'peso' => 0.0,
+            'esp' => 'VOLUME',
+            'marca' => null,
+        ];
+
+        $this->assertEquals($expectedArray, $tagVol->toArray());
     }
 }

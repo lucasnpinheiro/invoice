@@ -27,11 +27,10 @@ class TagRefNfeTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagRefNfe = TagRefNfe::create('1234567890');
-
         $expectedArray = [
             'refNFe' => '1234567890',
         ];
+        $tagRefNfe = TagRefNfe::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagRefNfe->toArray());
     }

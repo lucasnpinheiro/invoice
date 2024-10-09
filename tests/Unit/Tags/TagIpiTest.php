@@ -70,22 +70,6 @@ class TagIpiTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagIpi = TagIpi::create(
-            1,
-            'cEnq',
-            'CST',
-            10.5,
-            100.0,
-            5.0,
-            true,
-            'clEnq',
-            'CNPJProd',
-            'cSelo',
-            2.0,
-            3.0,
-            4.0
-        );
-
         $expectedArray = [
             'item' => 1,
             'cEnq' => 'cEnq',
@@ -101,6 +85,7 @@ class TagIpiTest extends TestCase
             'qUnid' => 3.0,
             'vUnid' => 4.0,
         ];
+        $tagIpi = TagIpi::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagIpi->toArray());
     }

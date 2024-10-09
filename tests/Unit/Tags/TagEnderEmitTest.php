@@ -43,21 +43,6 @@ class TagEnderEmitTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagEnderEmit = TagEnderEmit::create(
-            'ACME Corp',
-            'Street 1',
-            '123',
-            'Neighborhood',
-            '1234567',
-            'City',
-            'UF',
-            '12345678',
-            '123',
-            'Country',
-            '123456789',
-            'Additional Info'
-        );
-
         $expectedArray = [
             'xNome' => 'ACME Corp',
             'xLgr' => 'Street 1',
@@ -72,6 +57,8 @@ class TagEnderEmitTest extends TestCase
             'fone' => '123456789',
             'xCpl' => 'Additional Info',
         ];
+
+        $tagEnderEmit = TagEnderEmit::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagEnderEmit->toArray());
     }

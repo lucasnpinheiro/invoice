@@ -61,20 +61,6 @@ class TagIcmsSnTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagIcmsSn = TagIcmsSn::create(
-            1,
-            0,
-            'CSOSN',
-            'CST',
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-        );
-
         $expectedArray = [
             'item' => 1,
             'orig' => 0,
@@ -108,6 +94,7 @@ class TagIcmsSnTest extends TestCase
             'vICMSEfet' => null,
             'vICMSSubstituto' => null,
         ];
+        $tagIcmsSn = TagIcmsSn::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagIcmsSn->toArray());
     }

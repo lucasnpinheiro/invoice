@@ -55,16 +55,6 @@ class TagDetPagTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagDetPag = TagDetPag::create(
-            'credit_card',
-            1,
-            123.45,
-            678.90,
-            '1234567890',
-            100.0,
-            2
-        );
-
         $expectedArray = [
             'tPag' => 'credit_card',
             'indPag' => 1,
@@ -74,6 +64,7 @@ class TagDetPagTest extends TestCase
             'vPag' => 100.0,
             'tpIntegra' => 2,
         ];
+        $tagDetPag = TagDetPag::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagDetPag->toArray());
     }

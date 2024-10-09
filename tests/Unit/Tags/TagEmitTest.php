@@ -37,18 +37,6 @@ class TagEmitTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagEmit = TagEmit::create(
-            'ACME Corp',
-            'ACME',
-            '123456789',
-            'CRT',
-            '12345678901234',
-            'IEST',
-            'IM',
-            'CNAE',
-            '12345678901'
-        );
-
         $expectedArray = [
             'xNome' => 'ACME Corp',
             'xFant' => 'ACME',
@@ -60,6 +48,8 @@ class TagEmitTest extends TestCase
             'CNAE' => 'CNAE',
             'CPF' => '12345678901'
         ];
+
+        $tagEmit = TagEmit::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagEmit->toArray());
     }

@@ -39,8 +39,6 @@ class TagCofinsTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagCofins = TagCofins::create(1, 'CST456', 200.0, 150.0, 0.8, 10.0, 5.0);
-
         $expectedArray = [
             'item' => 1,
             'CST' => 'CST456',
@@ -50,6 +48,8 @@ class TagCofinsTest extends TestCase
             'qBCProd' => 10.0,
             'vAliqProd' => 5.0,
         ];
+
+        $tagCofins = TagCofins::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagCofins->toArray());
     }

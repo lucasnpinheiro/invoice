@@ -69,34 +69,6 @@ class TagProdTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagProd = TagProd::create(
-            1,
-            '1234567890123',
-            '1234567890123',
-            'PROD001',
-            'Product 1',
-            '12345678',
-            '1234',
-            'UN',
-            '10',
-            '5.99',
-            '59.90',
-            'UN',
-            '10',
-            '5.99',
-            '1',
-            '1',
-            '10.00',
-            '2.00',
-            '3.00',
-            '1.00',
-            '12345678901234',
-            'Benefit',
-            'EXTIPI',
-            '12345678901234',
-            'Order123'
-        );
-
         $expectedArray = [
             'item' => 1,
             'cEAN' => '1234567890123',
@@ -124,6 +96,7 @@ class TagProdTest extends TestCase
             'cBarraTrib' => '12345678901234',
             'xPed' => 'Order123',
         ];
+        $tagProd = TagProd::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagProd->toArray());
     }

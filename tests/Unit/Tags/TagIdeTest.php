@@ -67,33 +67,6 @@ class TagIdeTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagIde = TagIde::create(
-            'SP',
-            'Venda de Produtos',
-            '55',
-            '001',
-            '123456',
-            '2022-01-01 10:00:00',
-            '2022-01-01 10:30:00',
-            '1',
-            '1',
-            '3550308',
-            '1',
-            '1',
-            '1',
-            '1',
-            '1',
-            '1',
-            '1',
-            '1',
-            '123',
-            '1',
-            '456',
-            '1',
-            '2022-01-01 11:00:00',
-            'Justification'
-        );
-
         $expectedArray = [
             'cUF' => 'SP',
             'natOp' => 'Venda de Produtos',
@@ -120,6 +93,7 @@ class TagIdeTest extends TestCase
             'dhCont' => '2022-01-01 11:00:00',
             'xJus' => 'Justification',
         ];
+        $tagIde = TagIde::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagIde->toArray());
     }

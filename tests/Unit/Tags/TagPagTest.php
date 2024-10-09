@@ -27,11 +27,11 @@ class TagPagTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagPag = TagPag::create(10.0);
-
         $expectedArray = [
             'vTroco' => 10.0,
         ];
+
+        $tagPag = TagPag::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagPag->toArray());
     }

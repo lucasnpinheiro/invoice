@@ -49,15 +49,6 @@ class TagInfRespTecTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagInfRespTec = TagInfRespTec::create(
-            '1234567890',
-            'John Doe',
-            'john@example.com',
-            '1234567890',
-            'CSRT123',
-            'IDCSRT123'
-        );
-
         $expectedArray = [
             'CNPJ' => '1234567890',
             'xContato' => 'John Doe',
@@ -66,6 +57,7 @@ class TagInfRespTecTest extends TestCase
             'CSRT' => 'CSRT123',
             'idCSRT' => 'IDCSRT123',
         ];
+        $tagInfRespTec = TagInfRespTec::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagInfRespTec->toArray());
     }

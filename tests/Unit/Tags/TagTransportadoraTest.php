@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NotaFiscal\Tests\Unit\Tags;
 
+use InvalidArgumentException;
 use NotaFiscal\Tags\TagTransportadora;
 use PHPUnit\Framework\TestCase;
 
@@ -11,88 +12,79 @@ class TagTransportadoraTest extends TestCase
 {
     public function testCreate(): void
     {
-        $tagTransportadora = TagTransportadora::create(
-            'Transportadora ABC',
-            '123456789',
-            'Rua A',
-            'Cidade B',
-            'UF',
-            '12345678901'
-        );
-
-        $this->assertInstanceOf(TagTransportadora::class, $tagTransportadora);
-        $this->assertSame('Transportadora ABC', $tagTransportadora->xNome());
-        $this->assertSame('123456789', $tagTransportadora->IE());
-        $this->assertSame('Rua A', $tagTransportadora->xEnder());
-        $this->assertSame('Cidade B', $tagTransportadora->xMun());
-        $this->assertSame('UF', $tagTransportadora->UF());
-        $this->assertSame('12345678901', $tagTransportadora->CPF());
-        $this->assertSame(null, $tagTransportadora->CNPJ());
-    }
-
-    public function testCreateWithNullValues(): void
-    {
-        $tagTransportadora = TagTransportadora::create('Transportadora XYZ');
-
-        $this->assertInstanceOf(TagTransportadora::class, $tagTransportadora);
-        $this->assertSame('Transportadora XYZ', $tagTransportadora->xNome());
-        $this->assertNull($tagTransportadora->IE());
-        $this->assertNull($tagTransportadora->xEnder());
-        $this->assertNull($tagTransportadora->xMun());
-        $this->assertNull($tagTransportadora->UF());
-        $this->assertNull($tagTransportadora->CPF());
-        $this->assertNull($tagTransportadora->CNPJ());
-    }
-
-    public function testCPF(): void
-    {
-        $tagTransportadora = TagTransportadora::create(
-            'Transportadora XYZ',
-            null,
-            null,
-            null,
-            null,
-            '123.456.789-01'
-        );
-
-        $this->assertSame('12345678901', $tagTransportadora->CPF());
-    }
-
-    public function testCNPJ(): void
-    {
-        $tagTransportadora = TagTransportadora::create(
-            'Transportadora XYZ',
-            null,
-            null,
-            null,
-            null,
-            '12.345.678/0001-90'
-        );
-
-        $this->assertSame('12345678000190', $tagTransportadora->CNPJ());
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901');
+        $this->assertInstanceOf(TagTransportadora::class, $tag);
     }
 
     public function testToArray(): void
     {
-        $tagTransportadora = TagTransportadora::create(
-            'Transportadora ABC',
-            '123456789',
-            'Rua A',
-            'Cidade B',
-            'UF',
-            '12345678901'
-        );
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901');
+        $array = $tag->toArray();
+        $this->assertArrayHasKey('xNome', $array);
+        $this->assertArrayHasKey('IE', $array);
+        $this->assertArrayHasKey('xEnder', $array);
+        $this->assertArrayHasKey('xMun', $array);
+        $this->assertArrayHasKey('UF', $array);
+        $this->assertArrayHasKey('CPF_CNPJ', $array);
+    }
 
-        $expectedArray = [
-            'xNome' => 'Transportadora ABC',
-            'IE' => '123456789',
-            'xEnder' => 'Rua A',
-            'xMun' => 'Cidade B',
-            'UF' => 'UF',
-            'CPF' => '12345678901',
-            'CNPJ' => null,
-        ];
+    public function testXNome(): void
+    {
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901');
+        $this->assertEquals('Teste', $tag->xNome());
+    }
 
-        $this->assertSame($expectedArray, $tagTransportadora->toArray());
+    public function testIE(): void
+    {
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901');
+        $this->assertEquals('IE', $tag->IE());
+    }
+
+    public function testXEnder(): void
+    {
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901');
+        $this->assertEquals('Ender', $tag->xEnder());
+    }
+
+    public function testXMun(): void
+    {
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901');
+        $this->assertEquals('Mun', $tag->xMun());
+    }
+
+    public function testUF(): void
+    {
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901');
+        $this->assertEquals('UF', $tag->UF());
+    }
+
+    public function testCPF_CNPJ(): void
+    {
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901');
+        $this->assertEquals('12345678901', $tag->CPF_CNPJ());
+    }
+
+    public function testIsCpf(): void
+    {
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901');
+        $this->assertTrue($tag->isCpf());
+    }
+
+    public function testIsCnpj(): void
+    {
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '12345678901234');
+        $this->assertTrue($tag->isCnpj());
+    }
+
+    public function testInvalidCPF_CNPJ(): void
+    {
+        $this->expectException(InvalidArgumentException::class);
+        TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '123456789');
+    }
+
+    public function testEmptyCPF_CNPJ(): void
+    {
+        $tag = TagTransportadora::create('Teste', 'IE', 'Ender', 'Mun', 'UF', '');
+        $this->assertNull($tag->CPF_CNPJ());
     }
 }

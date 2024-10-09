@@ -43,19 +43,14 @@ class TagCestTest extends TestCase
 
     public function testToArray(): void
     {
-        $tagCest = TagCest::create(
-            1,
-            '12345678',
-            'Escala',
-            '12345678901234'
-        );
-
         $expectedArray = [
             'item' => 1,
             'CEST' => '12345678',
             'indEscala' => 'Escala',
             'CNPJFab' => '12345678901234',
         ];
+
+        $tagCest = TagCest::create(...$expectedArray);
 
         $this->assertSame($expectedArray, $tagCest->toArray());
     }
