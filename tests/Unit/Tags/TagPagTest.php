@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
-use NotaFiscal\Tags\TagPag;
+use Lucasnpinheiro\NotaFiscal\Tags\TagPag;
 use PHPUnit\Framework\TestCase;
 
 class TagPagTest extends TestCase

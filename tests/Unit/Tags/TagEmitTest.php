@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
-use NotaFiscal\Tags\TagEmit;
+use Lucasnpinheiro\NotaFiscal\Tags\TagEmit;
 use PHPUnit\Framework\TestCase;
 
 class TagEmitTest extends TestCase

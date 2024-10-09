@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
-use NotaFiscal\Tags\TagInfRespTec;
+use Lucasnpinheiro\NotaFiscal\Tags\TagInfRespTec;
 use PHPUnit\Framework\TestCase;
 
 class TagInfRespTecTest extends TestCase

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
-use NotaFiscal\Tags\TagIpi;
+use Lucasnpinheiro\NotaFiscal\Tags\TagIpi;
 use PHPUnit\Framework\TestCase;
 
 class TagIpiTest extends TestCase

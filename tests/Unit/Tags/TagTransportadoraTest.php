@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
 use InvalidArgumentException;
-use NotaFiscal\Tags\TagTransportadora;
+use Lucasnpinheiro\NotaFiscal\Tags\TagTransportadora;
 use PHPUnit\Framework\TestCase;
 
 class TagTransportadoraTest extends TestCase

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
-use NotaFiscal\Tags\TagTransp;
+use Lucasnpinheiro\NotaFiscal\Tags\TagTransp;
 use PHPUnit\Framework\TestCase;
 
 class TagTranspTest extends TestCase

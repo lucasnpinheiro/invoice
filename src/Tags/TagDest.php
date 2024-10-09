@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tags;
 
 use InvalidArgumentException;
 

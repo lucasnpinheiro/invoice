@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
-use NotaFiscal\Tags\TagEnderDest;
+use Lucasnpinheiro\NotaFiscal\Tags\TagEnderDest;
 use PHPUnit\Framework\TestCase;
 
 class TagEnderDestTest extends TestCase

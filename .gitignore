@@ -7,3 +7,4 @@ supervisord.pid
 .idea
 .phpunit.result.cache
 tests/reports
+/coverage/

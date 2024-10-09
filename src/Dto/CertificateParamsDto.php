@@ -1,6 +1,6 @@
 <?php
 
-namespace NotaFiscal\Dto;
+namespace Lucasnpinheiro\NotaFiscal\Dto;
 
 use Exception;
 

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
-use NotaFiscal\Tags\TagInfAdic;
+use Lucasnpinheiro\NotaFiscal\Tags\TagInfAdic;
 use PHPUnit\Framework\TestCase;
 
 class TagInfAdicTest extends TestCase

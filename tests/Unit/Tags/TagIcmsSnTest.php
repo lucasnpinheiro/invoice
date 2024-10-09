@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
-use NotaFiscal\Tags\TagIcmsSn;
+use Lucasnpinheiro\NotaFiscal\Tags\TagIcmsSn;
 use PHPUnit\Framework\TestCase;
 
 class TagIcmsSnTest extends TestCase

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
-use NotaFiscal\Tags\TagRefNfe;
+use Lucasnpinheiro\NotaFiscal\Tags\TagRefNfe;
 use PHPUnit\Framework\TestCase;
 use stdClass;
 

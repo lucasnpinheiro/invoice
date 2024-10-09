@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal\Tests\Unit\Tags;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Tags;
 
 use DateTime;
-use NotaFiscal\Tags\TagDup;
+use Lucasnpinheiro\NotaFiscal\Tags\TagDup;
 use PHPUnit\Framework\TestCase;
 
 class TagDupTest extends TestCase

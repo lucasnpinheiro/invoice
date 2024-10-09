@@ -1,7 +1,8 @@
 <?php
 
-use NotaFiscal\Dto\CertificateParamsDto;
-use NotaFiscal\NotaFiscalBase;
+
+use Lucasnpinheiro\NotaFiscal\Dto\CertificateParamsDto;
+use Lucasnpinheiro\NotaFiscal\NotaFiscalBase;
 
 require_once '../vendor/autoload.php';
 

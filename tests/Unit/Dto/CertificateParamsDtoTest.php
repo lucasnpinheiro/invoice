@@ -1,9 +1,9 @@
 <?php
 
-namespace NotaFiscal\Tests\Unit\Dto;
+namespace Lucasnpinheiro\NotaFiscal\Tests\Unit\Dto;
 
 use Exception;
-use NotaFiscal\Dto\CertificateParamsDto;
+use Lucasnpinheiro\NotaFiscal\Dto\CertificateParamsDto;
 use PHPUnit\Framework\TestCase;
 
 class CertificateParamsDtoTest extends TestCase
@@ -56,10 +56,10 @@ class CertificateParamsDtoTest extends TestCase
         $dto = new CertificateParamsDto(
             'path',
             'password',
-            '12345678901234',
-            'Razão Social',
-            'UF',
-            2
+          '12345678901234',
+           'Razão Social',
+         'UF',
+            2,
         );
 
         $expectedArray = [
@@ -72,6 +72,29 @@ class CertificateParamsDtoTest extends TestCase
         ];
 
         $this->assertSame($expectedArray, $dto->toArray());
+    }
+
+    public function testToObject(): void
+    {
+        $dto = new CertificateParamsDto(
+            'path',
+            'password',
+            '12345678901234',
+            'Razão Social',
+            'UF',
+            2,
+        );
+
+        $expectedArray = (object)[
+            'path' => 'path',
+            'password' => 'password',
+            'cnpj' => '12345678901234',
+            'razao_social' => 'Razão Social',
+            'uf' => 'UF',
+            'ambiente' => 2,
+        ];
+
+        $this->assertEquals($expectedArray, $dto->toObject());
     }
 
     public function testPath(): void

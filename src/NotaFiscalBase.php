@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace NotaFiscal;
+namespace Lucasnpinheiro\NotaFiscal;
 
-use Exception;
+use InvalidArgumentException;
+use Lucasnpinheiro\NotaFiscal\Dto\CertificateParamsDto;
 use NFePHP\Common\Certificate;
 use NFePHP\NFe\Tools;
-use NotaFiscal\Dto\CertificateParamsDto;
 use Throwable;
 
 class NotaFiscalBase
@@ -15,11 +15,11 @@ class NotaFiscalBase
     public function getCertificate(CertificateParamsDto $dto): Tools
     {
         if (empty($dto->password())) {
-            throw new Exception("Senha do certificado não informada");
+            throw new InvalidArgumentException("Senha do certificado não informada");
         }
 
-        if (!file_exists($dto->path())) {
-            throw new Exception("Certificado não encontrado");
+        if (empty($dto->path())) {
+            throw new InvalidArgumentException("Certificado não encontrado");
         }
 
         try {
