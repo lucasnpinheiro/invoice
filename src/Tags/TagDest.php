@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace NotaFiscal\Tags;
 
+use InvalidArgumentException;
+
 class TagDest extends Base
 {
     private function __construct(
@@ -15,17 +17,11 @@ class TagDest extends Base
         private ?string $IM = null,
         private ?string $email = null,
         private ?string $idEstrangeiro = null,
-        private ?string $CPF = null,
-        private ?string $CNPJ = null,
     ) {
         $CPF_CNPJ = preg_replace('/\D/', '', $CPF_CNPJ);
 
-        if (strlen($CPF_CNPJ) === 11) {
-            $this->CPF = $CPF_CNPJ;
-        }
-
-        if (strlen($CPF_CNPJ) === 14) {
-            $this->CNPJ = $CPF_CNPJ;
+        if (strlen($CPF_CNPJ) !== 11 && strlen($CPF_CNPJ) !== 14) {
+            throw new InvalidArgumentException('CPF_CNPJ inválido');
         }
     }
 
@@ -57,8 +53,7 @@ class TagDest extends Base
             'xNome' => $this->xNome(),
             'indIEDest' => $this->indIEDest(),
             'IE' => $this->IE(),
-            'CPF' => $this->CPF(),
-            'CNPJ' => $this->CNPJ(),
+            'CPF_CNPJ' => $this->CPF_CNPJ(),
             'ISUF' => $this->ISUF(),
             'IM' => $this->IM(),
             'email' => $this->email(),
@@ -81,14 +76,19 @@ class TagDest extends Base
         return $this->IE;
     }
 
-    public function CPF(): ?string
+    public function CPF_CNPJ(): ?string
     {
-        return $this->CPF;
+        return $this->CPF_CNPJ;
     }
 
-    public function CNPJ(): ?string
+    public function isCpf(): bool
     {
-        return $this->CNPJ;
+        return strlen($this->CPF_CNPJ) === 11;
+    }
+
+    public function isCnpj(): bool
+    {
+        return strlen($this->CPF_CNPJ) === 14;
     }
 
     public function ISUF(): ?string

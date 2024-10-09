@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace NotaFiscal\Tags;
 
+use InvalidArgumentException;
+
 class TagTransportadora extends Base
 {
     private function __construct(
@@ -14,6 +16,11 @@ class TagTransportadora extends Base
         private ?string $UF = null,
         private ?string $CPF_CNPJ = null
     ) {
+        $cpfCnpj = preg_replace('/[^0-9]/', '', $this->CPF_CNPJ);
+
+        if (!empty($cpfCnpj) && (strlen($cpfCnpj) !== 11 && strlen($cpfCnpj) !== 14)) {
+            throw new InvalidArgumentException('CPF/CNPJ inválido');
+        }
     }
 
     public static function create(
@@ -42,8 +49,7 @@ class TagTransportadora extends Base
             'xEnder' => $this->xEnder(),
             'xMun' => $this->xMun(),
             'UF' => $this->UF(),
-            'CPF' => $this->CPF(),
-            'CNPJ' => $this->CNPJ(),
+            'CPF_CNPJ' => $this->CPF_CNPJ(),
         ];
     }
 
@@ -72,23 +78,17 @@ class TagTransportadora extends Base
         return $this->UF;
     }
 
-    public function CPF(): ?string
+    public function CPF_CNPJ(): ?string
     {
-        if (empty($this->CPF_CNPJ)) {
-            return null;
-        }
-
-        $cpf = preg_replace('/[^0-9]/', '', $this->CPF_CNPJ);
-        return strlen($cpf) === 11 ? $cpf : null;
+        return empty($this->CPF_CNPJ) ? null : $this->CPF_CNPJ;
     }
 
-    public function CNPJ(): ?string
+    public function isCpf(): bool
     {
-        if (empty($this->CPF_CNPJ)) {
-            return null;
-        }
-
-        $cnpj = preg_replace('/[^0-9]/', '', $this->CPF_CNPJ);
-        return strlen($cnpj) === 14 ? $cnpj : null;
+        return strlen($this->CPF_CNPJ) === 11;
+    }
+    public function isCnpj(): bool
+    {
+        return strlen($this->CPF_CNPJ) === 14;
     }
 }

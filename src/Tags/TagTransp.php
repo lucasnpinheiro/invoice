@@ -7,27 +7,27 @@ namespace NotaFiscal\Tags;
 class TagTransp extends Base
 {
     private function __construct(
-        private int $modFrete,
+        private int $refNFe,
     ) {
     }
 
     public static function create(
-        int $modFrete,
+        int $refNFe,
     ): self {
         return new self(
-            $modFrete
+            $refNFe
         );
     }
 
     public function toArray(): array
     {
         return [
-            'refNFe' => $this->modFrete(),
+            'refNFe' => $this->refNFe(),
         ];
     }
 
-    public function modFrete(): int
+    public function refNFe(): int
     {
-        return $this->modFrete;
+        return $this->refNFe;
     }
 }

@@ -8,20 +8,20 @@ class TagInfNfe extends Base
 {
     private function __construct(
         private string $versao,
-        private ?string $pkNItem = null,
-        private ?string $id = null
+        private ?string $pk_nItem = null,
+        private ?string $Id = null
     ) {
     }
 
     public static function create(
         ?string $versao,
-        ?string $pkNItem,
-        ?string $id
+        ?string $pk_nItem,
+        ?string $Id
     ): self {
         return new self(
             $versao ?? '4.00',
-            $pkNItem,
-            $id
+                $pk_nItem,
+            $Id
         );
     }
 
@@ -41,11 +41,11 @@ class TagInfNfe extends Base
 
     public function pkNItem(): ?string
     {
-        return $this->pkNItem;
+        return $this->pk_nItem;
     }
 
     public function id(): ?string
     {
-        return $this->id;
+        return $this->Id;
     }
 }
